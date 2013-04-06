@@ -35,3 +35,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "twitter"
+
+group :console do
+  gem "pry"
+end
