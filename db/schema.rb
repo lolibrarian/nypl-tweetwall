@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406221409) do
+ActiveRecord::Schema.define(:version => 20130407143925) do
+
+  create_table "biblio_commons_content_items", :force => true do |t|
+    t.string   "url",                        :null => false
+    t.string   "title",                      :null => false
+    t.string   "thumbnail_url",              :null => false
+    t.integer  "title_id",      :limit => 8, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "biblio_commons_content_items", ["title_id"], :name => "index_biblio_commons_content_items_on_title_id"
+  add_index "biblio_commons_content_items", ["title_id"], :name => "unique_title_id", :unique => true
+
+  create_table "biblio_commons_content_matches", :force => true do |t|
+    t.integer "tweet_id",                       :null => false
+    t.integer "biblio_commons_content_item_id", :null => false
+  end
+
+  add_index "biblio_commons_content_matches", ["tweet_id", "biblio_commons_content_item_id"], :name => "index_biblio_commons_content_matches_on_tweet_and_content_item"
+  add_index "biblio_commons_content_matches", ["tweet_id", "biblio_commons_content_item_id"], :name => "unique_biblio_commons_content_match", :unique => true
 
   create_table "blog_content_items", :force => true do |t|
     t.string   "url",           :null => false
