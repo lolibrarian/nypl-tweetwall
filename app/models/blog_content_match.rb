@@ -28,7 +28,7 @@ class BlogContentMatch < ActiveRecord::Base
   # Returns a "blog ID" (a unique portion of a NYPL Blogs URL), if found.
   def self.blog_id_from_url(url)
     uri = URI(url)
-    return unless uri.hostname == "www.nypl.org"
+    return unless uri.host == "www.nypl.org"
 
     match = uri.path.scan(/\A\/blog\/(.*)/).first
     return if match.nil?
