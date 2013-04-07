@@ -15,6 +15,10 @@ class BiblioCommonsContentItem < ActiveRecord::Base
             :url,
             :presence => true
 
+  validates :url,
+            :thumbnail_url,
+            :length => {:maximum => 1020}
+
   before_validation :fetch_metadata
 
   expires_in 1.hour

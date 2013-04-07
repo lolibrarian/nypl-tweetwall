@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407191410) do
+ActiveRecord::Schema.define(:version => 20130407203839) do
 
   create_table "biblio_commons_content_items", :force => true do |t|
-    t.string   "url",                        :null => false
-    t.string   "title",                      :null => false
-    t.string   "thumbnail_url",              :null => false
-    t.integer  "title_id",      :limit => 8, :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string   "url",           :limit => 1020, :null => false
+    t.string   "title",                         :null => false
+    t.string   "thumbnail_url", :limit => 1020, :null => false
+    t.integer  "title_id",      :limit => 8,    :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "biblio_commons_content_items", ["title_id"], :name => "index_biblio_commons_content_items_on_title_id"
@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(:version => 20130407191410) do
   add_index "biblio_commons_content_matches", ["tweet_id", "biblio_commons_content_item_id"], :name => "unique_biblio_commons_content_match", :unique => true
 
   create_table "blog_content_items", :force => true do |t|
-    t.string   "url",           :null => false
-    t.string   "title",         :null => false
-    t.string   "thumbnail_url", :null => false
-    t.string   "blog_id",       :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "url",           :limit => 1020, :null => false
+    t.string   "title",                         :null => false
+    t.string   "thumbnail_url", :limit => 1020, :null => false
+    t.string   "blog_id",                       :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "blog_content_items", ["blog_id"], :name => "index_blog_content_items_on_blog_id"
@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(:version => 20130407191410) do
   add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "unique_blog_content_match", :unique => true
 
   create_table "digital_gallery_content_items", :force => true do |t|
-    t.string   "url",           :null => false
-    t.string   "title",         :null => false
-    t.string   "thumbnail_url", :null => false
-    t.integer  "image_id",      :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "url",           :limit => 1020, :null => false
+    t.string   "title",                         :null => false
+    t.string   "thumbnail_url", :limit => 1020, :null => false
+    t.integer  "image_id",                      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "digital_gallery_content_items", ["image_id"], :name => "index_digital_gallery_content_items_on_image_id"
@@ -74,11 +74,11 @@ ActiveRecord::Schema.define(:version => 20130407191410) do
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "unique_digital_gallery_content_match", :unique => true
 
   create_table "tweet_urls", :force => true do |t|
-    t.string   "original_url", :null => false
-    t.string   "expanded_url", :null => false
+    t.string   "original_url", :limit => 1020, :null => false
+    t.string   "expanded_url", :limit => 1020, :null => false
     t.integer  "tweet_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "tweet_urls", ["tweet_id"], :name => "index_tweet_urls_on_tweet_id"

@@ -10,6 +10,10 @@ class TweetUrl < ActiveRecord::Base
             :expanded_url,
             :presence => true
 
+  validates :original_url,
+            :expanded_url,
+            :length => {:maximum => 1020}
+
   before_validation :expand_url
 
   # Creates a new TweetUrl record with the given url object from the Twitter
