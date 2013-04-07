@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407143925) do
+ActiveRecord::Schema.define(:version => 20130407191410) do
 
   create_table "biblio_commons_content_items", :force => true do |t|
     t.string   "url",                        :null => false
@@ -52,6 +52,26 @@ ActiveRecord::Schema.define(:version => 20130407143925) do
 
   add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "index_blog_content_matches_on_tweet_id_and_blog_content_item_id"
   add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "unique_blog_content_match", :unique => true
+
+  create_table "digital_gallery_content_items", :force => true do |t|
+    t.string   "url",           :null => false
+    t.string   "title",         :null => false
+    t.string   "thumbnail_url", :null => false
+    t.integer  "image_id",      :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "digital_gallery_content_items", ["image_id"], :name => "index_digital_gallery_content_items_on_image_id"
+  add_index "digital_gallery_content_items", ["image_id"], :name => "unique_image_id", :unique => true
+
+  create_table "digital_gallery_content_matches", :force => true do |t|
+    t.integer "tweet_id",                        :null => false
+    t.integer "digital_gallery_content_item_id", :null => false
+  end
+
+  add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "index_digital_gallery_content_matches_on_tweet_and_content_item"
+  add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "unique_digital_gallery_content_match", :unique => true
 
   create_table "tweet_urls", :force => true do |t|
     t.string   "original_url", :null => false
