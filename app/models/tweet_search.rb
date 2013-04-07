@@ -20,7 +20,7 @@ class TweetSearch
 
   # The cap on the number of results.
   def limit
-    100
+    Rails.env.production? ? 100 : 10
   end
 
   def search_and_save_results
