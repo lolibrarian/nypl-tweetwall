@@ -35,24 +35,13 @@ class BlogContentItem < ActiveRecord::Base
 
   # Fetches additional metadata associated with the blog.
   def fetch_metadata
-    self.title ||= fetch_title
-    self.thumbnail_url ||= fetch_thumbnail_url
+    self.title ||= blog.title
+    self.thumbnail_url ||= blog.thumbnail_url
   rescue
     false
   end
 
-  # Fetches the blog title from the blog document.
-  def fetch_title
-    blog_document.title.split("|").first.strip
-  end
-
-  # Fetches the blog thumbnail from the blog document.
-  def fetch_thumbnail_url
-    blog_document.xpath("//meta[@property='og:image']/@content").to_s
-  end
-
-  # Fetches and caches a blog document.
-  def blog_document
-    @document ||= Nokogiri::HTML(open url)
+  def blog
+    @blog ||= Blog.new(url)
   end
 end
