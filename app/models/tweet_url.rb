@@ -8,13 +8,14 @@ class TweetUrl < ActiveRecord::Base
   attr_accessible :original_url,
                   :expanded_url
 
-  def self.from_api(url)
+  # Creates a new TweetUrl record with the given url object from the Twitter
+  # API (specifically, the Twitter gem).
+  def self.create_from_api(url)
     create(:original_url => url.expanded_url)
   end
 
+  # "Expands" the original URL by following all of the redirects.
   def expand_url
-    return if original_url.nil?
-
     self.expanded_url ||= open(original_url) { |file| file.base_uri.to_s }
   end
 end

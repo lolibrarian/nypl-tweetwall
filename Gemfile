@@ -41,3 +41,5 @@ gem "twitter"
 group :console do
   gem "pry"
 end
+
+gem "nokogiri"

@@ -58,6 +58,7 @@ GEM
     mime-types (1.22)
     multi_json (1.7.2)
     multipart-post (1.2.0)
+    nokogiri (1.5.9)
     pg (0.15.0)
     polyglot (0.3.3)
     pry (0.9.12)
@@ -121,6 +122,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
+  nokogiri
   pg
   pry
   rails (= 3.2.13)

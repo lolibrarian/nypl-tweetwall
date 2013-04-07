@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406192513) do
+ActiveRecord::Schema.define(:version => 20130406221409) do
+
+  create_table "blog_content_items", :force => true do |t|
+    t.string   "url",           :null => false
+    t.string   "title",         :null => false
+    t.string   "thumbnail_url", :null => false
+    t.string   "blog_id",       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "blog_content_items", ["blog_id"], :name => "index_blog_content_items_on_blog_id"
+  add_index "blog_content_items", ["blog_id"], :name => "unique_blog_id", :unique => true
+
+  create_table "blog_content_matches", :force => true do |t|
+    t.integer "tweet_id",             :null => false
+    t.integer "blog_content_item_id", :null => false
+  end
+
+  add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "index_blog_content_matches_on_tweet_id_and_blog_content_item_id"
+  add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "unique_blog_content_match", :unique => true
 
   create_table "tweet_urls", :force => true do |t|
     t.string   "original_url", :null => false

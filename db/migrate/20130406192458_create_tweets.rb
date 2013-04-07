@@ -14,7 +14,7 @@ class CreateTweets < ActiveRecord::Migration
     # Allows for the storage of Twitter's large status ID values.
     change_column(:tweets, :status_id, :integer, :limit => 8)
 
-    # To make status ID querying efficient.
+    # To make status ID querying more efficient.
     add_index(:tweets, :status_id)
 
     # To protect against the same status ID from being stored twice.
