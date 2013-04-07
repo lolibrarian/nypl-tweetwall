@@ -43,3 +43,5 @@ group :console do
 end
 
 gem "nokogiri"
+
+gem "unicorn"
