@@ -1,12 +1,11 @@
 namespace :tweets do
+  desc "Updates Tweets"
   task :update => :environment do
-    blog_tweet_search = BlogTweetSearch.new
-    blog_tweet_search.search_and_save_results
+    TweetSearch.update
+  end
 
-    Tweet.find_in_batches do |batch|
-      batch.each do |tweet|
-        BlogContentMatch.find_or_create_content_items(tweet)
-      end
-    end
+  desc "Deletes expired Tweets"
+  task :delete_expired => :environment do
+    Tweet.expired.destroy_all
   end
 end

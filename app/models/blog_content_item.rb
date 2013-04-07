@@ -1,7 +1,9 @@
 require "open-uri"
 
 class BlogContentItem < ActiveRecord::Base
-  has_many :blog_content_matches
+  extend Expirable
+
+  has_many :blog_content_matches, :dependent => :destroy
   has_many :tweets, :through => :blog_content_matches
 
   attr_accessible :blog_id,
@@ -16,6 +18,8 @@ class BlogContentItem < ActiveRecord::Base
             :presence => true
 
   before_validation :fetch_metadata
+
+  expire_in 1.hour
 
   # Finds or creates a new BlogContentItem record with the given blog ID.
   def self.find_or_create(blog_id, url)

@@ -1,6 +1,8 @@
 class Tweet < ActiveRecord::Base
-  has_many :tweet_urls
-  has_many :blog_content_matches
+  extend Expirable
+
+  has_many :tweet_urls, :dependent => :destroy
+  has_many :blog_content_matches, :dependent => :destroy
   has_many :blog_content_items, :through => :blog_content_matches
 
   attr_accessible :text,
@@ -17,6 +19,8 @@ class Tweet < ActiveRecord::Base
             :status_id,
             :tweet_created_at,
             :presence => true
+
+  expire_in 1.day
 
   # Finds or creates a new Tweet record (and associated TweetUrls) with the
   # given status object from the Twitter API (specifically, the Twitter gem).

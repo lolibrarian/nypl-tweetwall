@@ -1,6 +1,26 @@
+# A delegator and base class for all Tweet searching classes.
 class TweetSearch
+  # Returns all known Tweet searching classes.
+  def self.classes
+    [BlogTweetSearch]
+  end
+
+  # Updates all Twitter searches.
+  def self.update
+    classes.each do |klass|
+      instance = klass.new
+      instance.search_and_save_results
+    end
+  end
+
+  # The text query to perform.
   def query
     raise
+  end
+
+  # The cap on the number of results.
+  def limit
+    100
   end
 
   def search_and_save_results
@@ -9,7 +29,7 @@ class TweetSearch
   end
 
   def search
-    @results = Twitter.search(query, :count => 100)
+    @results = Twitter.search(query, :count => limit)
   end
 
   def statuses
