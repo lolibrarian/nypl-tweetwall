@@ -4,11 +4,16 @@ require "json"
 
 # BiblioCommons API documentation: http://developer.bibliocommons.com/docs
 class BiblioCommons
+  extend Throttleable
+
   VERSION = "v1"
   NYPL_HOST = "nypl.bibliocommons.com"
   API_HOST = "api.bibliocommons.com"
 
-  class << self; attr_accessor :api_key; end
+  class << self
+    attr_accessor :api_key,
+                  :throttle_delay
+  end
 
   def self.configure(&block)
     yield(self)
@@ -23,6 +28,6 @@ class BiblioCommons
   end
 
   def self.titles(id)
-    get("titles/#{id}")["title"]
+    throttle { get("titles/#{id}")["title"] }
   end
 end
