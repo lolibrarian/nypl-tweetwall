@@ -20,7 +20,7 @@ class Tweet < ActiveRecord::Base
             :tweet_created_at,
             :presence => true
 
-  expire_in 1.day
+  expires_in 1.day, :tweet_created_at
 
   # Finds or creates a new Tweet record (and associated TweetUrls) with the
   # given status object from the Twitter API (specifically, the Twitter gem).

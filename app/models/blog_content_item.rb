@@ -19,7 +19,7 @@ class BlogContentItem < ActiveRecord::Base
 
   before_validation :fetch_metadata
 
-  expire_in 1.hour
+  expires_in 1.hour
 
   # Finds or creates a new BlogContentItem record with the given blog ID.
   def self.find_or_create(blog_id, url)

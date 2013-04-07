@@ -1,9 +1,10 @@
 module Expirable
-  def expire_in(length)
+  def expires_in(length, key = :created_at)
     @expiration_length = length
+    @expiration_key = key
   end
 
   def expired
-    where("created_at < ?", @expiration_length.ago)
+    where("? < ?",@expiration_key, @expiration_length.ago)
   end
 end
