@@ -11,11 +11,11 @@ class DigitalGalleryContentMatch < ActiveRecord::Base
             :digital_gallery_content_item,
             :presence => true
 
-  content_match :content_id_finder => :image_id_from_url,
-                :content_class     => :digital_gallery_content_item
+  content_match :content_id    => :image_id,
+                :content_class => :digital_gallery_content_item
 
   # Returns the image ID from the given URL, if found.
-  def self.image_id_from_url(url)
+  def self.content_id_finder(url)
     uri = URI(url)
     return unless (uri.host == gallery_uri.host) and (uri.path == gallery_uri.path)
 

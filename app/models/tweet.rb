@@ -41,7 +41,7 @@ class Tweet < ActiveRecord::Base
       :tweet_created_at  => status.created_at
     )
 
-    tweet.tweet_urls << status.urls.map { |url| TweetUrl.create_from_api(url) }
+    tweet.tweet_urls << status.urls.map { |url| TweetUrl.create(:original_url => url.expanded_url) }
   end
 
   def url
