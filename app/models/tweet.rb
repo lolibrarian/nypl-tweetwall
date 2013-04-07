@@ -10,6 +10,14 @@ class Tweet < ActiveRecord::Base
                   :status_id,
                   :tweet_created_at
 
+  validates :text,
+            :user_name,
+            :screen_name,
+            :profile_image_url,
+            :status_id,
+            :tweet_created_at,
+            :presence => true
+
   # Finds or creates a new Tweet record (and associated TweetUrls) with the
   # given status object from the Twitter API (specifically, the Twitter gem).
   def self.find_or_create_from_api(status)

@@ -5,6 +5,10 @@ class BlogContentMatch < ActiveRecord::Base
   attr_accessible :tweet,
                   :blog_content_item
 
+  validates :tweet,
+            :blog_content_item,
+            :presence => true
+
   # Iterates through the TweetUrls associated with the given Tweet instance,
   # looking for blog IDs. If a blog ID is found, it is then found or created.
   # Finally, the match is made.
@@ -15,9 +19,9 @@ class BlogContentMatch < ActiveRecord::Base
       next unless blog_id
 
       blog_content_item = BlogContentItem.find_or_create(blog_id, url)
-      next if blog_content_item
+      next unless blog_content_item
 
-      create(:tweet => tweet, :blog_content_item => blog_content_item)
+      find_or_create_by_tweet_id_and_blog_content_item_id(tweet.id, blog_content_item.id)
     end
   end
 

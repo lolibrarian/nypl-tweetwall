@@ -9,7 +9,7 @@ class TweetSearch
   end
 
   def search
-    @results = Twitter.search(query)
+    @results = Twitter.search(query, :count => 100)
   end
 
   def statuses
@@ -17,8 +17,6 @@ class TweetSearch
   end
 
   def save_results
-    statuses.each_with_index do |status, index|
-      Tweet.find_or_create_from_api(status)
-    end
+    statuses.each { |status| Tweet.find_or_create_from_api(status) }
   end
 end
