@@ -1,4 +1,6 @@
 class BlogContentMatch < ActiveRecord::Base
+  include ContentMatch
+
   belongs_to :tweet
   belongs_to :blog_content_item
 
@@ -9,30 +11,17 @@ class BlogContentMatch < ActiveRecord::Base
             :blog_content_item,
             :presence => true
 
-  # Iterates through the TweetUrls associated with the given Tweet instance,
-  # looking for blog IDs. If a blog ID is found, the content item is either
-  # found or created. Finally, the match is made.
-  def self.find_or_create_content_items(tweet)
-    tweet.tweet_urls.each do |tweet_url|
-      url = tweet_url.expanded_url
-      blog_id = self.blog_id_from_url(url)
-      next unless blog_id
+  content_match :content_id_finder => :blog_id_from_url,
+                :content_class     => :blog_content_item
 
-      blog_content_item = BlogContentItem.find_or_create(blog_id, url)
-      next unless blog_content_item
-
-      find_or_create_by_tweet_id_and_blog_content_item_id(tweet.id, blog_content_item.id)
-    end
-  end
-
-  # Returns a "blog ID" (a unique portion of a NYPL Blogs URL), if found.
+  # Returns a blog ID (a unique portion of a NYPL Blogs URL), if found.
   def self.blog_id_from_url(url)
     uri = URI(url)
-    return unless uri.host == "www.nypl.org"
+    return unless uri.host == Blog::HOST
 
-    match = uri.path.scan(/\A\/blog\/(.+)/).first
-    return if match.nil?
+    matches = uri.path.scan(/\A\/blog\/(.+)/).first
+    return if matches.nil?
 
-    match.first
+    matches.first
   end
 end

@@ -2,6 +2,9 @@ require "uri"
 require "open-uri"
 
 class DigitalGallery
+  SEARCH_URL = "http://digitalgallery.nypl.org/nypldigital/dgkeysearchdetail.cfm"
+  IMAGE_URL = "http://images.nypl.org/index.php"
+
   def initialize(image_id)
     @image_id = image_id
   end
@@ -11,7 +14,7 @@ class DigitalGallery
   end
 
   def uri
-    uri = URI.parse("http://digitalgallery.nypl.org/nypldigital/dgkeysearchdetail.cfm")
+    uri = URI.parse(SEARCH_URL)
     params = {:imageID => @image_id}
     uri.query = URI.encode_www_form(params)
 
@@ -23,7 +26,7 @@ class DigitalGallery
   end
 
   def thumbnail_url
-    uri = URI.parse("http://images.nypl.org/index.php")
+    uri = URI.parse(IMAGE_URL)
     params = {
       :id => @image_id,
       :t => "w"

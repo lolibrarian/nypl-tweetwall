@@ -1,4 +1,6 @@
 class BiblioCommonsContentMatch < ActiveRecord::Base
+  include ContentMatch
+
   belongs_to :tweet
   belongs_to :biblio_commons_content_item
 
@@ -9,30 +11,17 @@ class BiblioCommonsContentMatch < ActiveRecord::Base
             :biblio_commons_content_item,
             :presence => true
 
-  # Iterates through the TweetUrls associated with the given Tweet instance,
-  # looking for title IDs. If a title ID is found, the content item is either
-  # then found or created. Finally, the match is made.
-  def self.find_or_create_content_items(tweet)
-    tweet.tweet_urls.each do |tweet_url|
-      url = tweet_url.expanded_url
-      title_id = self.title_id_from_url(url)
-      next unless title_id
+  content_match :content_id_finder => :title_id_from_url,
+                :content_class     => :biblio_commons_content_item
 
-      biblio_commons_content_item = BiblioCommonsContentItem.find_or_create(title_id, url)
-      next unless biblio_commons_content_item
-
-      find_or_create_by_tweet_id_and_biblio_commons_content_item_id(tweet.id, biblio_commons_content_item.id)
-    end
-  end
-
-  # Returns the title ID from a NYPL BiblioCommons URL, if found.
+  # Returns the title ID from the given URL, if found.
   def self.title_id_from_url(url)
     uri = URI(url)
-    return unless uri.host == "nypl.bibliocommons.com"
+    return unless uri.host == BiblioCommons::NYPL_HOST
 
-    match = uri.path.scan(/\A\/item\/show\/(\d+)/).first
-    return if match.nil?
+    matches = uri.path.scan(/\A\/item\/show\/(\d+)/).first
+    return if matches.nil?
 
-    match.first
+    matches.first
   end
 end

@@ -1,4 +1,6 @@
 class DigitalGalleryContentMatch < ActiveRecord::Base
+  include ContentMatch
+
   belongs_to :tweet
   belongs_to :digital_gallery_content_item
 
@@ -9,30 +11,22 @@ class DigitalGalleryContentMatch < ActiveRecord::Base
             :digital_gallery_content_item,
             :presence => true
 
-  # Iterates through the TweetUrls associated with the given Tweet instance,
-  # looking for image IDs. If a image ID is found, the content item is either
-  # then found or created. Finally, the match is made.
-  def self.find_or_create_content_items(tweet)
-    tweet.tweet_urls.each do |tweet_url|
-      url = tweet_url.expanded_url
-      image_id = self.image_id_from_url(url)
-      next unless image_id
+  content_match :content_id_finder => :image_id_from_url,
+                :content_class     => :digital_gallery_content_item
 
-      digital_gallery_content_item = DigitalGalleryContentItem.find_or_create(image_id, url)
-      next unless digital_gallery_content_item
-
-      find_or_create_by_tweet_id_and_digital_gallery_content_item_id(tweet.id, digital_gallery_content_item.id)
-    end
-  end
-
-  # Returns the image ID from a NYPL digital gallery URL, if found.
+  # Returns the image ID from the given URL, if found.
   def self.image_id_from_url(url)
     uri = URI(url)
-    return unless uri.host == "digitalgallery.nypl.org"
-    return unless uri.path == "/nypldigital/dgkeysearchdetail.cfm"
+    return unless (uri.host == gallery_uri.host) and (uri.path == gallery_uri.path)
 
-    params = Hash[*URI.decode_www_form(uri.query).flatten]
+    params_from_uri(uri)["imageID"]
+  end
 
-    params["imageID"]
+  def self.gallery_uri
+    URI.parse(DigitalGallery::SEARCH_URL)
+  end
+
+  def self.params_from_uri(uri)
+    Hash[*URI.decode_www_form(uri.query).flatten]
   end
 end

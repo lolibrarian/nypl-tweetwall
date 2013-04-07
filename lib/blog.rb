@@ -1,4 +1,6 @@
 class Blog
+  HOST = "www.nypl.org"
+
   def initialize(url)
     @url = url
   end

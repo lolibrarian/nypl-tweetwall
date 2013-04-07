@@ -17,7 +17,7 @@ class TweetUrl < ActiveRecord::Base
   before_validation :expand_url
 
   # Creates a new TweetUrl record with the given url object from the Twitter
-  # API (specifically, the Twitter gem).
+  # API (more specifically, the Twitter gem).
   def self.create_from_api(url)
     create(:original_url => url.expanded_url)
   end
