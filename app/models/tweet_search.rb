@@ -1,4 +1,4 @@
-# A delegator and base class for all Tweet searching classes.
+# A delegator (and base class) for all Tweet searching classes.
 class TweetSearch
   # Returns all known Tweet searching classes.
   def self.classes
