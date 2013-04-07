@@ -1,8 +1,8 @@
 require "open-uri"
 
 class BlogContentItem < ActiveRecord::Base
-  has_many :content_matches
-  has_many :tweets, :through => :content_matches
+  has_many :blog_content_matches
+  has_many :tweets, :through => :blog_content_matches
 
   before_save :fetch_metadata
 

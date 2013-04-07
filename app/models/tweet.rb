@@ -27,4 +27,8 @@ class Tweet < ActiveRecord::Base
 
     tweet.tweet_urls << status.urls.map { |url| TweetUrl.create_from_api(url) }
   end
+
+  def url
+    "https://twitter.com/#{screen_name}/status/#{status_id}"
+  end
 end
