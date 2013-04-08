@@ -41,7 +41,6 @@ class TweetSearch
       next if Tweet.find_by_status_id(status.id)
 
       tweet = Tweet.create(
-        :status_id         => status.id,
         :text              => status.text,
         :user_name         => status.user.name,
         :screen_name       => status.user.screen_name,
