@@ -7,7 +7,7 @@ class ContentItem
 
   # Returns all records from all content item classes (and associated Tweets).
   def self.all
-    classes.map { |klass| klass.joins(:tweets) }.flatten
+    classes.map { |klass| klass.includes(:tweets) }.flatten
   end
 
   # Deletes all expired content items.
