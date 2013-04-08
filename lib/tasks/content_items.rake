@@ -6,6 +6,6 @@ namespace :content_items do
 
   desc "Deletes expired content items"
   task :delete_expired => :environment do
-    ContentItem.expire_all
+    ContentItem.delete_expired
   end
 end

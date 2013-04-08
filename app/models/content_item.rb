@@ -5,13 +5,13 @@ class ContentItem
     [BlogContentItem, BiblioCommonsContentItem, DigitalGalleryContentItem]
   end
 
-  # Returns all records from all content item classes.
+  # Returns all records from all content item classes (and associated Tweets).
   def self.all
-    classes.map(&:all).flatten
+    classes.map { |klass| klass.joins(:tweets) }.flatten
   end
 
-  # Expires all content items.
-  def self.expire_all
+  # Deletes all expired content items.
+  def self.delete_expired
     classes.each do |klass|
       klass.expired.destroy_all
     end

@@ -37,6 +37,24 @@ class TweetSearch
   end
 
   def save_results
-    statuses.each { |status| Tweet.find_or_create_from_api(status) }
+    statuses.each do |status|
+      next if Tweet.find_by_status_id(status.id)
+
+      tweet = Tweet.create(
+        :status_id         => status.id,
+        :text              => status.text,
+        :user_name         => status.user.name,
+        :screen_name       => status.user.screen_name,
+        :profile_image_url => status.user.profile_image_url,
+        :status_id         => status.id,
+        :tweet_created_at  => status.created_at
+      )
+
+      next unless tweet
+
+      tweet.tweet_urls << status.urls.map do |url|
+        TweetUrl.create(:original_url => url.expanded_url)
+      end
+    end
   end
 end

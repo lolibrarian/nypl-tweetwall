@@ -1,7 +1,7 @@
 require "open-uri"
 
 class BlogContentItem < ActiveRecord::Base
-  extend Expirable
+  include Expirable
 
   has_many :blog_content_matches, :dependent => :destroy
   has_many :tweets, :through => :blog_content_matches

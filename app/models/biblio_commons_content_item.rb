@@ -1,5 +1,5 @@
 class BiblioCommonsContentItem < ActiveRecord::Base
-  extend Expirable
+  include Expirable
 
   has_many :biblio_commons_content_matches, :dependent => :destroy
   has_many :tweets, :through => :biblio_commons_content_matches

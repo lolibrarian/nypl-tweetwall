@@ -1,7 +1,7 @@
 require "open-uri"
 
 class DigitalGalleryContentItem < ActiveRecord::Base
-  extend Expirable
+  include Expirable
 
   has_many :digital_gallery_content_matches, :dependent => :destroy
   has_many :tweets, :through => :digital_gallery_content_matches

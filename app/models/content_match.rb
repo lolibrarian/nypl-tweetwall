@@ -5,7 +5,7 @@ module ContentMatch
     [BlogContentMatch, BiblioCommonsContentMatch, DigitalGalleryContentMatch]
   end
 
-  # Updates1 matches between Tweets and content items.
+  # Updates matches between Tweets and content items.
   def self.update
     Tweet.find_in_batches do |batch|
       batch.each do |tweet|
