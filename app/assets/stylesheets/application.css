@@ -12,3 +12,7 @@
  *= require bootstrap
  *= require_tree .
  */
+
+.nav a {
+  font-size: 20px;
+}

@@ -1,13 +1,19 @@
 .content-item {
   width: 340px;
   margin: 10px 10px 40px 10px;
-  padding-top: 40px;
+  padding: 20px 20px 0px 20px;
   float: left;
 }
 
 .content-item h3 {
   padding: 10px 20px 10px 20px;
   line-height: 30px;
+}
+
+.content-item .content-item-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tweet {

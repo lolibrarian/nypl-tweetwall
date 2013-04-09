@@ -28,7 +28,11 @@ class Tweet < ActiveRecord::Base
 
   expires_in 3.days, :tweet_created_at
 
+  def profile_url
+    "https://twitter.com/#{screen_name}"
+  end
+
   def url
-    "https://twitter.com/#{screen_name}/status/#{status_id}"
+    "#{profile_url}/status/#{status_id}"
   end
 end

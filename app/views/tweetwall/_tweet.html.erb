@@ -1,12 +1,12 @@
 <li>
   <div class="tweet media">
-    <a class="pull-left" href="#">
+    <%= link_to(tweet.profile_url, :class => "pull-left") do %>
       <%= image_tag(tweet.profile_image_url,
                     :class  => "profile-image media-object img-circle",
                     :alt    => "#{tweet.screen_name}'s profile") %>
-    </a>
+    <% end %>
     <div class="media-body">
-      <h4 class="media-heading"><%= tweet.user_name %> (@<%= tweet.screen_name %>)</h4>
+      <h4 class="media-heading"><%= tweet.user_name %> <%= link_to "@#{tweet.screen_name}", tweet.profile_url %></h4>
       <p><%= tweet.text %></p>
       <%= link_to("#{time_ago_in_words(tweet.tweet_created_at)} ago", tweet.url) %>
     </div>
