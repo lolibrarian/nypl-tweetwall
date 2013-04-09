@@ -14,19 +14,7 @@ class DigitalGalleryContentMatch < ActiveRecord::Base
   content_match :content_id    => :image_id,
                 :content_class => :digital_gallery_content_item
 
-  # Returns the image ID from the given URL, if found.
   def self.content_id_finder(url)
-    uri = URI(url)
-    return unless (uri.host == gallery_uri.host) and (uri.path == gallery_uri.path)
-
-    params_from_uri(uri)["imageID"]
-  end
-
-  def self.gallery_uri
-    URI.parse(DigitalGallery::SEARCH_URL)
-  end
-
-  def self.params_from_uri(uri)
-    Hash[*URI.decode_www_form(uri.query).flatten]
+    DigitalGallery.id_from_url(url)
   end
 end

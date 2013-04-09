@@ -40,8 +40,8 @@ module ContentMatch
       self.send("find_or_create_by_tweet_id_and_#{@content_class}_id", tweet.id, content_item.id)
     end
 
-    def create_content_item(content_id, url)
-      content_class.send("find_or_create_by_#{@content_id}", content_id, :url => url)
+    def create_content_item(content_id)
+      content_class.send("find_or_create_by_#{@content_id}", content_id)
     end
 
     def content_id_finder(url)
@@ -64,7 +64,7 @@ module ContentMatch
         content_id = content_id_finder(url)
         next unless content_id
 
-        content_item = create_content_item(content_id, url)
+        content_item = create_content_item(content_id)
         next unless content_item
 
         create_match(tweet, content_item)

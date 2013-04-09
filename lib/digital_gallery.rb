@@ -2,21 +2,39 @@ require "uri"
 require "open-uri"
 
 class DigitalGallery
-  SEARCH_URL = "http://digitalgallery.nypl.org/nypldigital/dgkeysearchdetail.cfm"
-  IMAGE_URL = "http://images.nypl.org/index.php"
+  BASE_SEARCH_URI = URI.parse("http://digitalgallery.nypl.org/nypldigital/dgkeysearchdetail.cfm")
+  BASE_IMAGE_URI = URI.parse("http://images.nypl.org/index.php")
 
-  def initialize(image_id)
-    @image_id = image_id
+  # Extracts a digital gallery image ID from the given URL.
+  def self.id_from_url(url)
+    uri = URI(url)
+    return unless (uri.host == BASE_SEARCH_URI.host) and (uri.path == BASE_SEARCH_URI.path)
+
+    params_from_uri(uri)["imageID"]
+  end
+
+  # Returns a params hash from the given URI.
+  def self.params_from_uri(uri)
+    Hash[*URI.decode_www_form(uri.query).flatten]
+  end
+
+  def initialize(id)
+    @id = id
   end
 
   def document
     @document ||= Nokogiri::HTML(open(uri), nil, "UTF-8")
   end
 
+  # Returns a query string from the given params hash.
+  def params_to_query(params)
+    URI.encode_www_form(params)
+  end
+
   def uri
-    uri = URI.parse(SEARCH_URL)
-    params = {:imageID => @image_id}
-    uri.query = URI.encode_www_form(params)
+    uri = BASE_SEARCH_URI.dup
+    params = {:imageID => @id}
+    uri.query = params_to_query(params)
 
     uri
   end
@@ -25,15 +43,15 @@ class DigitalGallery
     document.xpath("//meta[@name='dc.Title']/@content").to_s
   end
 
-  def thumbnail_url
-    uri = URI.parse(IMAGE_URL)
+  def thumbnail_uri
+    uri = BASE_IMAGE_URI.dup
     params = {
-      :id => @image_id,
+      :id => @id,
       :t => "w"
     }
 
-    uri.query = URI.encode_www_form(params)
+    uri.query = params_to_query(params)
 
-    uri.to_s
+    uri
   end
 end

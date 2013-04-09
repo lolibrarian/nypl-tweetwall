@@ -8,18 +8,14 @@ class BlogContentItem < ActiveRecord::Base
 
   attr_accessible :blog_id,
                   :thumbnail_url,
-                  :title,
-                  :url
+                  :title
 
   validates :blog_id,
             :thumbnail_url,
             :title,
-            :url,
             :presence => true
 
-  validates :url,
-            :thumbnail_url,
-            :length => {:maximum => 1020}
+  validates :thumbnail_url, :length => {:maximum => 1020}
 
   before_validation :fetch_metadata
 
@@ -34,6 +30,10 @@ class BlogContentItem < ActiveRecord::Base
   end
 
   def blog
-    @blog ||= Blog.new(url)
+    @blog ||= Blog.new(blog_id)
+  end
+
+  def url
+    blog.uri.to_s
   end
 end

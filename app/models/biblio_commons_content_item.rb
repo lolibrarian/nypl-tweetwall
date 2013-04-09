@@ -6,18 +6,14 @@ class BiblioCommonsContentItem < ActiveRecord::Base
 
   attr_accessible :title_id,
                   :thumbnail_url,
-                  :title,
-                  :url
+                  :title
 
   validates :title_id,
             :thumbnail_url,
             :title,
-            :url,
             :presence => true
 
-  validates :url,
-            :thumbnail_url,
-            :length => {:maximum => 1020}
+  validates :thumbnail_url, :length => {:maximum => 1020}
 
   before_validation :fetch_metadata
 
@@ -25,29 +21,17 @@ class BiblioCommonsContentItem < ActiveRecord::Base
 
   # Fetches additional metadata associated with the item.
   def fetch_metadata
-    self.title ||= biblio_commons_api["title"]
-    self.thumbnail_url ||= BakerTaylor.jacket_url(upc_or_isbn)
+    self.title ||= biblio_commons.title
+    self.thumbnail_url ||= biblio_commons.thumbnail_url
   rescue
     false
   end
 
-  # Returns the first UPC (if present) or ISBN.
-  def upc_or_isbn
-    (upcs.present? ? upcs : isbns).first
+  def url
+    biblio_commons.uri.to_s
   end
 
-  # Returns the UPCs from the BiblioCommons API.
-  def upcs
-    biblio_commons_api["upcs"]
-  end
-
-  # Returns the ISBNs from the BiblioCommons API.
-  def isbns
-    biblio_commons_api["isbns"]
-  end
-
-  # Fetches and caches the BiblioCommons API response.
-  def biblio_commons_api
-    @response ||= BiblioCommons.titles(title_id)
+  def biblio_commons
+    @response ||= BiblioCommons.new(title_id)
   end
 end
