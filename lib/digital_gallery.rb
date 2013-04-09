@@ -10,7 +10,7 @@ class DigitalGallery
   end
 
   def document
-    @document ||= Nokogiri::HTML(open uri)
+    @document ||= Nokogiri::HTML(open(uri), nil, "UTF-8")
   end
 
   def uri
