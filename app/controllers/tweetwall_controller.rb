@@ -1,5 +1,5 @@
 class TweetwallController < ApplicationController
-  caches_page :index
+  caches_action :index
 
   def index
     @content_items = ContentItem.all.shuffle

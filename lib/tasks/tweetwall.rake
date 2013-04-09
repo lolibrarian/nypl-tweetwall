@@ -8,9 +8,8 @@ namespace :tweetwall do
     :expire
   ]
 
-  desc "Expires the Tweetwall page cache"
-  task :expire do
-    page_pathname = Pathname.new(Rails.public_path + "/index.html")
-    page_pathname.delete if page_pathname.exist?
+  desc "Expires the Tweetwall action cache"
+  task :expire => :environment do
+    Rails.cache.clear
   end
 end

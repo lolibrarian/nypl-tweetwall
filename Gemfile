@@ -45,3 +45,5 @@ end
 gem "nokogiri"
 
 gem "unicorn"
+
+gem "dalli"
