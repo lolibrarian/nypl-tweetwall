@@ -1,3 +1,5 @@
 NYPL Tweetwall presents content from library collections that is currently being discussed on Twitter.
 
 It uses the Twitter API to collect tweets that match a certain format, and pulls in content thumbnails using the NYPL and BiblioCommons API.
+
+See it in action at http://nypl-tweetwall.herokuapp.com
