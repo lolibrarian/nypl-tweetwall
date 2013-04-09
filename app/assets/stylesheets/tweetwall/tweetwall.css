@@ -24,3 +24,7 @@
   height: 48px;
   width: 48px;
 }
+
+ul {
+  list-style: none;
+}
