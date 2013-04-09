@@ -5,11 +5,24 @@ class ContentItem
     [BlogContentItem, BiblioCommonsContentItem, DigitalGalleryContentItem]
   end
 
-  # Returns all records from all content item classes (and associated Tweets).
-  def self.all
-    classes.map do |klass|
+  # Returns all records from each of the given content item classes, including
+  # (and sorted by) their associated Tweets.
+  def self.all_including_and_sorted_by_tweets(classes)
+    content_items = Array(classes).map do |klass|
       klass.includes(:tweets).order("tweets.tweet_created_at DESC")
     end.flatten
+    exclude_without_tweets!(content_items)
+    sort_by_most_recent_tweet!(content_items)
+  end
+
+  # Excludes content items without any associated Tweets.
+  def self.exclude_without_tweets!(content_items)
+    content_items.select! { |content_item| content_item.tweets.any? }
+  end
+
+  # Sorts content items by their most recent Tweet.
+  def self.sort_by_most_recent_tweet!(content_items)
+    content_items.sort_by! { |content_item| -1 * content_item.tweets.first.tweet_created_at.to_i }
   end
 
   # Deletes all expired content items.

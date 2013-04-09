@@ -5,7 +5,7 @@ class TweetwallController < ApplicationController
                 :books
 
   def all
-    tweetwall(ContentItem)
+    tweetwall(ContentItem.classes)
   end
 
   def blogs
@@ -22,18 +22,8 @@ class TweetwallController < ApplicationController
 
 private
 
-  def tweetwall(klass)
-    @content_items = klass.all
-    exclude_without_tweets!(@content_items)
-    order_by_most_recent_tweet!(@content_items)
+  def tweetwall(classes)
+    @content_items = ContentItem.all_including_and_sorted_by_tweets(classes)
     render :tweetwall
-  end
-
-  def exclude_without_tweets!(content_items)
-    content_items.select! { |content_item| content_item.tweets.any? }
-  end
-
-  def order_by_most_recent_tweet!(content_items)
-    content_items.sort_by! { |content_item| -1 * content_item.tweets.first.tweet_created_at.to_i }
   end
 end
