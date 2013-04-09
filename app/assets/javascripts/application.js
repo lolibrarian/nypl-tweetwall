@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery.masonry
 //= require bootstrap
+//= require google_analytics
 //= require_tree .
