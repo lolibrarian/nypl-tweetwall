@@ -1,5 +1,6 @@
 <ul class="content-items thumbnails">
   <% @content_items.each_with_index do |content_item, index| %>
+    <% next if content_item.tweets.empty? %>
     <%= render :partial => "content_item", :locals => {:content_item => content_item} %>
   <% end %>
 </ul>
