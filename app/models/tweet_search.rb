@@ -40,7 +40,7 @@ class TweetSearch
     statuses.each do |status|
       next if Tweet.find_by_status_id(status.id)
 
-      tweet = Tweet.create(
+      tweet = Tweet.new(
         :text              => status.text,
         :user_name         => status.user.name,
         :screen_name       => status.user.screen_name,
@@ -49,10 +49,10 @@ class TweetSearch
         :tweet_created_at  => status.created_at
       )
 
-      next unless tweet
+      next unless tweet.save
 
-      tweet.tweet_urls << status.urls.map do |url|
-        TweetUrl.create(:original_url => url.expanded_url)
+      status.urls.map do |url|
+        tweet.tweet_urls << TweetUrl.new(:original_url => url.expanded_url)
       end
     end
   end
