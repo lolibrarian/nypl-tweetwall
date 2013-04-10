@@ -47,3 +47,5 @@ gem "nokogiri"
 gem "unicorn"
 
 gem "dalli"
+
+gem "airbrake"
