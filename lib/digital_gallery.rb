@@ -10,12 +10,15 @@ class DigitalGallery
     uri = URI(url)
     return unless (uri.host == BASE_SEARCH_URI.host) and (uri.path == BASE_SEARCH_URI.path)
 
-    params_from_uri(uri)["imageID"]
+    params = params_from_uri(uri)
+    return unless params
+
+    params["imageID"]
   end
 
   # Returns a params hash from the given URI.
   def self.params_from_uri(uri)
-    Hash[*URI.decode_www_form(uri.query).flatten]
+    Hash[*URI.decode_www_form(uri.query).flatten] rescue nil
   end
 
   def initialize(id)
