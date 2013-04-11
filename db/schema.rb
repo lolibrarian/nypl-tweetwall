@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409154417) do
+ActiveRecord::Schema.define(:version => 20130411004418) do
 
   create_table "biblio_commons_content_items", :force => true do |t|
     t.string   "title",                         :null => false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20130409154417) do
 
   create_table "digital_gallery_content_items", :force => true do |t|
     t.string   "title",      :null => false
-    t.integer  "image_id",   :null => false
+    t.string   "image_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
