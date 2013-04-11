@@ -41,7 +41,9 @@ class TweetSearch
       next if Tweet.find_by_status_id(status.id)
 
       tweet = Tweet.new(
-        :text              => status.text,
+        # The Tweet text needs to be HTML unescaped. Please see:
+        #   https://github.com/sferik/twitter/issues/348
+        :text              => CGI.unescapeHTML(status.text),
         :user_name         => status.user.name,
         :screen_name       => status.user.screen_name,
         :profile_image_url => status.user.profile_image_url,
