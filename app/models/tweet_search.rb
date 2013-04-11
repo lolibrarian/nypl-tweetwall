@@ -43,13 +43,15 @@ class TweetSearch
       tweet = Tweet.new(
         # The Tweet text needs to be HTML unescaped. Please see:
         #   https://github.com/sferik/twitter/issues/348
-        :text              => CGI.unescapeHTML(status.text),
-        :user_name         => status.user.name,
-        :screen_name       => status.user.screen_name,
-        :profile_image_url => status.user.profile_image_url,
-        :status_id         => status.id,
-        :tweet_created_at  => status.created_at
+        :text                => CGI.unescapeHTML(status.text),
+        :user_name           => status.user.name,
+        :screen_name         => status.user.screen_name,
+        :profile_image_url   => status.user.profile_image_url,
+        :status_id           => status.id,
+        :tweet_created_at    => status.created_at
       )
+
+      tweet.retweeted_status_id = status.retweeted_tweet.id if status.retweet?
 
       next unless tweet.save
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411004418) do
+ActiveRecord::Schema.define(:version => 20130411005338) do
 
   create_table "biblio_commons_content_items", :force => true do |t|
     t.string   "title",                         :null => false
@@ -80,14 +80,15 @@ ActiveRecord::Schema.define(:version => 20130411004418) do
   add_index "tweet_urls", ["tweet_id"], :name => "index_tweet_urls_on_tweet_id"
 
   create_table "tweets", :force => true do |t|
-    t.string   "text",                           :null => false
-    t.string   "user_name",                      :null => false
-    t.string   "screen_name",                    :null => false
-    t.string   "profile_image_url",              :null => false
-    t.integer  "status_id",         :limit => 8, :null => false
-    t.datetime "tweet_created_at",               :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.string   "text",                             :null => false
+    t.string   "user_name",                        :null => false
+    t.string   "screen_name",                      :null => false
+    t.string   "profile_image_url",                :null => false
+    t.integer  "status_id",           :limit => 8, :null => false
+    t.datetime "tweet_created_at",                 :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "retweeted_status_id", :limit => 8
   end
 
   add_index "tweets", ["status_id"], :name => "index_tweets_on_status_id"

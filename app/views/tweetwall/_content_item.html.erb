@@ -9,7 +9,7 @@
     <h3><%= link_to(content_item.title, content_item.url) %></h3>
     <ul>
       <% content_item.tweets.each do |tweet| %>
-        <%= render :partial => "tweet", :locals => {:tweet => tweet} %>
+        <%= render :partial => "tweet", :locals => {:tweets => content_item.tweets, :tweet => tweet} %>
       <% end %>
     </ul>
   </div>
