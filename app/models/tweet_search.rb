@@ -29,14 +29,18 @@ class TweetSearch
   end
 
   def search
-    @results = Twitter.search(query, :count => limit)
+    @results = Twitter.search(query, :count => limit) rescue nil
   end
 
   def statuses
+    return unless @results
+
     @results.statuses
   end
 
   def save_results
+    return unless statuses
+
     statuses.each do |status|
       next if Tweet.find_by_status_id(status.id)
 
