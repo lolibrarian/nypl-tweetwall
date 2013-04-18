@@ -12,8 +12,8 @@ class BiblioCommonsContentItem < ActiveRecord::Base
             :thumbnail_url,
             :title,
             :presence => true
-
   validates :thumbnail_url, :length => {:maximum => 1020}
+  validates :title, :length => {:maximum => 510}
 
   before_validation :fetch_metadata
 

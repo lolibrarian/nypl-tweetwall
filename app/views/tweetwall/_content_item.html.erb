@@ -6,7 +6,7 @@
                     :alt  => content_item.title) %>
     <% end %>
 
-    <h3><%= link_to(content_item.title, content_item.url) %></h3>
+    <h3><%= link_to(truncate(content_item.title, :length => 128), content_item.url) %></h3>
     <ul>
       <% content_item.tweets.each do |tweet| %>
         <%= render :partial => "tweet", :locals => {:tweets => content_item.tweets, :tweet => tweet} %>

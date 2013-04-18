@@ -12,6 +12,7 @@ class DigitalGalleryContentItem < ActiveRecord::Base
   validates :image_id,
             :title,
             :presence => true
+  validates :title, :length => {:maximum => 510}
 
   before_validation :fetch_metadata
 
