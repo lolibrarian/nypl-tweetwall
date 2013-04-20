@@ -1,6 +1,9 @@
 class Tweet < ActiveRecord::Base
   include Expirable
 
+  # Returns an array of blacklisted Twitter screen names.
+  SCREEN_NAME_BLACKLIST = ENV["TWITTER_SCREEN_NAME_BLACKLIST"].to_s.split(",")
+
   has_many :tweet_urls, :dependent => :destroy
   has_many :blog_content_matches, :dependent => :destroy
   has_many :blog_content_items, :through => :blog_content_matches
@@ -26,9 +29,23 @@ class Tweet < ActiveRecord::Base
             :tweet_created_at,
             :presence => true
 
-  validate :unexpired?, :on => :create
+  validate :unexpired?,
+           :permitted?,
+           :on => :create
 
   expires_in 3.days, :tweet_created_at
+
+  scope :blocked, where("screen_name IN (?)", SCREEN_NAME_BLACKLIST)
+
+  # Adds a validation error if blocked.
+  def permitted?
+    errors.add(screen_name, "is blocked") if blocked?
+  end
+
+  # Returns +true+ if this Tweet is blocked from being created.
+  def blocked?
+    SCREEN_NAME_BLACKLIST.include?(screen_name)
+  end
 
   def profile_url
     "https://twitter.com/#{screen_name}"

@@ -3,6 +3,7 @@ namespace :tweetwall do
   task :update => [
     "content_items:delete_expired",
     "tweets:delete_expired",
+    "tweets:delete_blocked",
     "tweets:update",
     "content_items:update",
     :expire

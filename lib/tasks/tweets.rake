@@ -8,4 +8,9 @@ namespace :tweets do
   task :delete_expired => :environment do
     Tweet.expired.destroy_all
   end
+
+  desc "Deletes blocked Tweets"
+  task :delete_blocked => :environment do
+    Tweet.blocked.destroy_all
+  end
 end
