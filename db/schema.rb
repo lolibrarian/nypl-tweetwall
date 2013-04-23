@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418202533) do
+ActiveRecord::Schema.define(:version => 20130423002406) do
 
-  create_table "biblio_commons_content_items", :force => true do |t|
+  create_table "biblio_commons_title_content_items", :force => true do |t|
     t.string   "title",         :limit => 510,  :null => false
     t.string   "thumbnail_url", :limit => 1020, :null => false
     t.integer  "title_id",      :limit => 8,    :null => false
@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(:version => 20130418202533) do
     t.datetime "updated_at",                    :null => false
   end
 
-  add_index "biblio_commons_content_items", ["title_id"], :name => "index_biblio_commons_content_items_on_title_id"
-  add_index "biblio_commons_content_items", ["title_id"], :name => "unique_title_id", :unique => true
+  add_index "biblio_commons_title_content_items", ["title_id"], :name => "index_biblio_commons_title_content_items_on_title_id"
+  add_index "biblio_commons_title_content_items", ["title_id"], :name => "unique_title_id", :unique => true
 
-  create_table "biblio_commons_content_matches", :force => true do |t|
-    t.integer "tweet_id",                       :null => false
-    t.integer "biblio_commons_content_item_id", :null => false
+  create_table "biblio_commons_title_content_matches", :force => true do |t|
+    t.integer "tweet_id",                             :null => false
+    t.integer "biblio_commons_title_content_item_id", :null => false
   end
 
-  add_index "biblio_commons_content_matches", ["tweet_id", "biblio_commons_content_item_id"], :name => "index_biblio_commons_content_matches_on_tweet_and_content_item"
-  add_index "biblio_commons_content_matches", ["tweet_id", "biblio_commons_content_item_id"], :name => "unique_biblio_commons_content_match", :unique => true
+  add_index "biblio_commons_title_content_matches", ["tweet_id", "biblio_commons_title_content_item_id"], :name => "index_biblio_commons_title_content_matches_on_tweet_and_content"
+  add_index "biblio_commons_title_content_matches", ["tweet_id", "biblio_commons_title_content_item_id"], :name => "unique_biblio_commons_title_content_match", :unique => true
 
   create_table "blog_content_items", :force => true do |t|
     t.string   "title",         :limit => 510,  :null => false

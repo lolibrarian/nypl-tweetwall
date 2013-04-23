@@ -7,8 +7,8 @@ class Tweet < ActiveRecord::Base
   has_many :tweet_urls, :dependent => :destroy
   has_many :blog_content_matches, :dependent => :destroy
   has_many :blog_content_items, :through => :blog_content_matches
-  has_many :biblio_commons_content_matches, :dependent => :destroy
-  has_many :biblio_commons_content_items, :through => :biblio_commons_content_matches
+  has_many :biblio_commons_title_content_matches, :dependent => :destroy
+  has_many :biblio_commons_title_content_items, :through => :biblio_commons_title_content_matches
   has_many :digital_gallery_content_matches, :dependent => :destroy
   has_many :digital_gallery_content_items, :through => :digital_gallery_content_matches
   has_one :retweeted_tweet, :class_name => Tweet, :primary_key => :retweeted_status_id, :foreign_key => :status_id

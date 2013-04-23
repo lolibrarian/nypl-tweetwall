@@ -2,7 +2,7 @@
 class TweetSearch
   # Returns all known Tweet searching classes.
   def self.classes
-    [BlogTweetSearch, BiblioCommonsTweetSearch, DigitalGalleryTweetSearch]
+    [BlogTweetSearch, BiblioCommonsTitleTweetSearch, DigitalGalleryTweetSearch]
   end
 
   # Updates all Twitter searches.

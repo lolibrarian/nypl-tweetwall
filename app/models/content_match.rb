@@ -2,7 +2,7 @@
 module ContentMatch
   # Returns all known content matching classes.
   def self.classes
-    [BlogContentMatch, BiblioCommonsContentMatch, DigitalGalleryContentMatch]
+    [BlogContentMatch, BiblioCommonsTitleContentMatch, DigitalGalleryContentMatch]
   end
 
   # Updates matches between Tweets and content items.

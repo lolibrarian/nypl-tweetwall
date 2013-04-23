@@ -17,7 +17,7 @@ class TweetwallController < ApplicationController
   end
 
   def books
-    tweetwall(BiblioCommonsContentItem)
+    tweetwall(BiblioCommonsTitleContentItem)
   end
 
 private

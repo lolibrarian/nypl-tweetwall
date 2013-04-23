@@ -1,8 +1,8 @@
-class BiblioCommonsContentItem < ActiveRecord::Base
+class BiblioCommonsTitleContentItem < ActiveRecord::Base
   include Expirable
 
-  has_many :biblio_commons_content_matches, :dependent => :destroy
-  has_many :tweets, :through => :biblio_commons_content_matches
+  has_many :biblio_commons_title_content_matches, :dependent => :destroy
+  has_many :tweets, :through => :biblio_commons_title_content_matches
 
   attr_accessible :title_id,
                   :thumbnail_url,
@@ -32,6 +32,6 @@ class BiblioCommonsContentItem < ActiveRecord::Base
   end
 
   def biblio_commons
-    @response ||= BiblioCommons.new(title_id)
+    @response ||= BiblioCommons::Title.new(title_id)
   end
 end
