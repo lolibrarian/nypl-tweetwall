@@ -1,6 +1,6 @@
 module BiblioCommons
   class Title
-    BASE_ITEM_URI = URI.parse("http://nypl.bibliocommons.com/item/show/")
+    BASE_ITEM_URI = URI.parse("http://nypl.bibliocommons.com/item/show")
 
     # Extracts a BiblioCommons title ID from the given URL.
     def self.id_from_url(url)
@@ -17,8 +17,8 @@ module BiblioCommons
       @id = id
     end
 
-    def uri
-      BASE_ITEM_URI + @id.to_s
+    def url
+      "#{BASE_ITEM_URI}/#{@id}"
     end
 
     def titles

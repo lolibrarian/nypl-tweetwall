@@ -1,16 +1,18 @@
-class BiblioCommonsTitleContentItem < ActiveRecord::Base
+class BiblioCommonsListContentItem < ActiveRecord::Base
   include Expirable
 
-  has_many :biblio_commons_title_content_matches, :dependent => :destroy
-  has_many :tweets, :through => :biblio_commons_title_content_matches
+  has_many :biblio_commons_list_content_matches, :dependent => :destroy
+  has_many :tweets, :through => :biblio_commons_list_content_matches
 
-  attr_accessible :title_id,
+  attr_accessible :list_id,
                   :thumbnail_url,
-                  :title
+                  :title,
+                  :user_id
 
-  validates :title_id,
+  validates :list_id,
             :thumbnail_url,
             :title,
+            :user_id,
             :presence => true
 
   validates :thumbnail_url, :length => {:maximum => 1020}
@@ -23,7 +25,8 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
 
   # Fetches additional metadata associated with the item.
   def fetch_metadata
-    self.title ||= biblio_commons.title
+    self.user_id ||= biblio_commons.user_id
+    self.title ||= biblio_commons.name
     self.thumbnail_url ||= biblio_commons.thumbnail_url
   rescue
     false
@@ -34,6 +37,6 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
   end
 
   def biblio_commons
-    @response ||= BiblioCommons::Title.new(title_id)
+    @response ||= BiblioCommons::List.new(list_id, user_id)
   end
 end
