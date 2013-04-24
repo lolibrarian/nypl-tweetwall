@@ -1,5 +1,11 @@
 <li>
   <div class="content-item thumbnail">
+    <% if content_item.class.ribbon? %>
+      <div class="ribbon-wrapper">
+        <div class="ribbon"><%= content_item.class.ribbon_label %></div>
+      </div>
+    <% end %>
+
     <%= link_to(content_item.url) do %>
       <%= image_tag(content_item.thumbnail_url,
                     :class => "content-item-image",
