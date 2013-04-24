@@ -52,6 +52,7 @@ NyplTweetwall::Application.routes.draw do
   match "blogs" => "tweetwall#blogs"
   match "images" => "tweetwall#images"
   match "books" => "tweetwall#books"
+  match "lists" => "tweetwall#lists"
 
   # See how all your routes lay out with "rake routes"
 

@@ -2,7 +2,8 @@ class TweetwallController < ApplicationController
   caches_action :all,
                 :blogs,
                 :images,
-                :books
+                :books,
+                :lists
 
   def all
     tweetwall(ContentItem.classes)
@@ -17,7 +18,11 @@ class TweetwallController < ApplicationController
   end
 
   def books
-    tweetwall([BiblioCommonsTitleContentItem, BiblioCommonsListContentItem])
+    tweetwall(BiblioCommonsTitleContentItem)
+  end
+
+  def lists
+    tweetwall(BiblioCommonsListContentItem)
   end
 
 private
