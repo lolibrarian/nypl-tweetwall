@@ -69,6 +69,8 @@ module ContentMatch
 
         create_match(tweet, content_item)
       end
+    rescue => exception
+      Airbrake.notify(exception)
     end
   end
 end
