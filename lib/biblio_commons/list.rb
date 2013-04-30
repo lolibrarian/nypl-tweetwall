@@ -27,7 +27,7 @@ module BiblioCommons
     end
 
     def name
-      lists["name"]
+      CGI.unescapeHTML(lists["name"])
     end
 
     def list_items
