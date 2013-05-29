@@ -1,16 +1,17 @@
 <li>
-  <div class="content-item thumbnail">
-    <%= link_to(content_item.url) do %>
-      <%= image_tag(content_item.thumbnail_url,
-                    :class => "content-item-image",
-                    :alt  => content_item.title) %>
-    <% end %>
-
-    <h3><%= link_to(truncate(content_item.title, :length => 128), content_item.url) %></h3>
-    <ul>
-      <% content_item.tweets.each do |tweet| %>
-        <%= render :partial => "tweet", :locals => {:tweets => content_item.tweets, :tweet => tweet} %>
+  <%= content_tag(:div, :class => "content-item thumbnail #{content_item.class.to_s.underscore}") do %>
+    <div class="image-container">
+      <%= link_to(content_item.url) do %>
+        <%= image_tag(content_item.thumbnail_url, :alt => content_item.title) %>
       <% end %>
-    </ul>
-  </div>
+    </div>
+    <h3><%= link_to(truncate(content_item.title, :length => 128), content_item.url) %></h3>
+    <div class="tweets">
+      <ul>
+        <% content_item.tweets.each do |tweet| %>
+          <%= render :partial => "tweet", :locals => {:tweets => content_item.tweets, :tweet => tweet} %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </li>
