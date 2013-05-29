@@ -1,6 +1,5 @@
 class BiblioCommonsTitleContentItem < ActiveRecord::Base
   include Expirable
-  extend Ribbonable
 
   has_many :biblio_commons_title_content_matches, :dependent => :destroy
   has_many :tweets, :through => :biblio_commons_title_content_matches

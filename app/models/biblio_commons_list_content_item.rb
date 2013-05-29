@@ -1,6 +1,5 @@
 class BiblioCommonsListContentItem < ActiveRecord::Base
   include Expirable
-  extend Ribbonable
 
   has_many :biblio_commons_list_content_matches, :dependent => :destroy
   has_many :tweets, :through => :biblio_commons_list_content_matches
@@ -23,10 +22,6 @@ class BiblioCommonsListContentItem < ActiveRecord::Base
   before_validation :fetch_metadata
 
   expires_in 1.hour
-
-  def self.ribbon_label
-    "List"
-  end
 
   # Fetches additional metadata associated with the item.
   def fetch_metadata
