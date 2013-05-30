@@ -36,4 +36,8 @@ class DigitalGalleryContentItem < ActiveRecord::Base
   def thumbnail_url
     digital_gallery.thumbnail_uri.to_s
   end
+
+  def glyphicon
+    "camera"
+  end
 end

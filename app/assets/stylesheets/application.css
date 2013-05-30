@@ -10,12 +10,13 @@
  *
  *= require_self
  *= require bootstrap
+ *= require bootstrap.icon-large
  *= require_tree .
  */
 
- body {
+body {
   background-color: #ddd !important;
- }
+}
 
 nav a {
   font-size: 20px;

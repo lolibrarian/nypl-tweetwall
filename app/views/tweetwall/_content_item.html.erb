@@ -5,7 +5,10 @@
         <%= image_tag(content_item.thumbnail_url, :alt => content_item.title) %>
       <% end %>
     </div>
-    <h3><%= link_to(truncate(content_item.title, :length => 128), content_item.url) %></h3>
+    <h3>
+      <%= content_tag(:i, nil, :class => "icon-large icon-#{content_item.glyphicon}") %>
+      <%= link_to(truncate(content_item.title, :length => 128), content_item.url) %>
+    </h3>
     <div class="tweets">
       <ul>
         <% content_item.tweets.each do |tweet| %>

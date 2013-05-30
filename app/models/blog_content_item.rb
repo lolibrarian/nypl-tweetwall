@@ -36,4 +36,8 @@ class BlogContentItem < ActiveRecord::Base
   def url
     blog.uri.to_s
   end
+
+  def glyphicon
+    "comment"
+  end
 end
