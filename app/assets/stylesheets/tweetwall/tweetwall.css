@@ -47,37 +47,3 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-/* Dummy CSS directives to allow for easy in-browser editing */
-
-.blog_content_item h3 {
-  background-color: white;
-}
-
-.biblio_commons_title_content_item h3 {
-  background-color: white;
-}
-
-.digital_gallery_content_item h3 {
-  background-color: white;
-}
-
-.biblio_commons_list_content_item h3 {
-  background-color: white;
-}
-
-.blog_content_item .tweets {
-  background-color: white;
-}
-
-.biblio_commons_title_content_item .tweets {
-  background-color: white;
-}
-
-.digital_gallery_content_item .tweets {
-  background-color: white;
-}
-
-.biblio_commons_list_content_item .tweets {
-  background-color: white;
-}
