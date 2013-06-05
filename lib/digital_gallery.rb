@@ -16,7 +16,7 @@ class DigitalGallery
     # The image ID parameter is not consistently capitalized between different
     # versions of the "Image Details" page, so perform a case-insensitive
     # search.
-    params.find { |key, value| key.downcase == "imageid" }.last
+    params.find { |key, value| key.downcase == "imageid" }.try(:last)
   end
 
   # Returns a params hash from the given URI.
