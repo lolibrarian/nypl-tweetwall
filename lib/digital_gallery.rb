@@ -13,7 +13,10 @@ class DigitalGallery
     params = params_from_uri(uri)
     return unless params
 
-    params["imageID"]
+    # The image ID parameter is not consistently capitalized between different
+    # versions of the "Image Details" page, so perform a case-insensitive
+    # search.
+    params.find { |key, value| key.downcase == "imageid" }.last
   end
 
   # Returns a params hash from the given URI.
