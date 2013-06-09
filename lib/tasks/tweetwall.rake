@@ -6,11 +6,17 @@ namespace :tweetwall do
     "tweets:delete_blocked",
     "tweets:update",
     "content_items:update",
-    :expire
+    :expire,
+    :warm
   ]
 
   desc "Expires the Tweetwall action cache"
   task :expire => :environment do
-    Rails.cache.clear
+    Tweetwall.expire
+  end
+
+  desc "Warms the Tweetwall action cache"
+  task :warm => :environment do
+    Tweetwall.warm
   end
 end
