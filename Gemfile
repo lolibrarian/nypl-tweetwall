@@ -21,31 +21,25 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
+# For interacting with the Twitter API.
 gem "twitter"
 
 group :console do
+  # A debugging console.
   gem "pry"
 end
 
+# Used to parse HTML documents.
 gem "nokogiri"
 
+# A web server.
 gem "unicorn"
 
+# A memcached client.
 gem "dalli"
 
+# Used to report errors.
 gem "airbrake"
+
+# Used to fetch metadata of remote images.
+gem "fastimage"
