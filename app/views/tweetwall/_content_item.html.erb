@@ -1,10 +1,8 @@
 <li>
   <%= content_tag(:div, :class => "content-item thumbnail #{content_item.class.to_s.underscore}") do %>
-    <div class="image-container">
-      <%= link_to(content_item.url) do %>
-        <%= image_tag(content_item.thumbnail_url, :alt => content_item.title) %>
-      <% end %>
-    </div>
+    <%= link_to(content_item.url) do %>
+      <%= image_tag(content_item.thumbnail_url, :alt => content_item.title) %>
+    <% end %>
     <h3>
       <%= content_tag(:i, nil, :class => "icon-large icon-#{content_item.glyphicon}") %>
       <%= link_to(truncate(content_item.title, :length => 128), content_item.url) %>
