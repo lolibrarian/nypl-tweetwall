@@ -5,16 +5,15 @@ class BlogContentItem < ActiveRecord::Base
 
   has_many :blog_content_matches, :dependent => :destroy
   has_many :tweets, :through => :blog_content_matches
+  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy
 
   attr_accessible :blog_id,
-                  :thumbnail_url,
                   :title
 
   validates :blog_id,
-            :thumbnail_url,
             :title,
+            :thumbnail_id,
             :presence => true
-  validates :thumbnail_url, :length => {:maximum => 1020}
   validates :title, :length => {:maximum => 510}
 
   before_validation :fetch_metadata
@@ -24,9 +23,7 @@ class BlogContentItem < ActiveRecord::Base
   # Fetches additional metadata associated with the blog.
   def fetch_metadata
     self.title ||= blog.title
-    self.thumbnail_url ||= blog.thumbnail_url
-  rescue
-    false
+    self.thumbnail ||= RemoteImage.create(:url => blog.thumbnail_url)
   end
 
   def blog

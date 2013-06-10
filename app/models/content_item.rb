@@ -9,7 +9,7 @@ class ContentItem
   # (and sorted by) their associated Tweets.
   def self.all_including_and_sorted_by_tweets(classes)
     content_items = Array(classes).map do |klass|
-      klass.includes(:tweets).order("tweets.tweet_created_at DESC")
+      klass.includes(:tweets).order("tweets.tweet_created_at DESC").includes(:thumbnail)
     end.flatten
     exclude_without_tweets!(content_items)
     sort_by_most_recent_tweet!(content_items)

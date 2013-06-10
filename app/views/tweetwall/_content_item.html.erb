@@ -1,7 +1,12 @@
 <li>
   <%= content_tag(:div, :class => "content-item thumbnail #{content_item.class.to_s.underscore}") do %>
     <%= link_to(content_item.url) do %>
-      <%= image_tag(content_item.thumbnail_url, :alt => content_item.title) %>
+      <% thumbnail = content_item.thumbnail %>
+      <%= image_tag(thumbnail.url,
+            # An inline style is used instead of width & height attributes so
+            # Bootstrap's own CSS declarations are overridden.
+            :style => "width: #{thumbnail.tweetwall_width}px; height: #{thumbnail.tweetwall_height}px;",
+            :alt => content_item.title) %>
     <% end %>
     <h3>
       <%= content_tag(:i, nil, :class => "icon-large icon-#{content_item.glyphicon}") %>

@@ -70,7 +70,7 @@ module ContentMatch
         create_match(tweet, content_item)
       end
     rescue => exception
-      Airbrake.notify(exception)
+      Rails.env.production? ? Airbrake.notify(exception) : raise(exception)
     end
   end
 end

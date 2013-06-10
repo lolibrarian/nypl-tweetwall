@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610171217) do
+ActiveRecord::Schema.define(:version => 20130610224144) do
 
   create_table "biblio_commons_list_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false

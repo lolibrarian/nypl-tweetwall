@@ -5,12 +5,14 @@ class DigitalGalleryContentItem < ActiveRecord::Base
 
   has_many :digital_gallery_content_matches, :dependent => :destroy
   has_many :tweets, :through => :digital_gallery_content_matches
+  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy
 
   attr_accessible :image_id,
                   :title
 
   validates :image_id,
             :title,
+            :thumbnail_id,
             :presence => true
   validates :title, :length => {:maximum => 510}
 
@@ -21,8 +23,7 @@ class DigitalGalleryContentItem < ActiveRecord::Base
   # Fetches additional metadata associated with the image.
   def fetch_metadata
     self.title ||= digital_gallery.title
-  rescue
-    false
+    self.thumbnail ||= RemoteImage.create(:url => digital_gallery.thumbnail_uri.to_s)
   end
 
   def digital_gallery
@@ -31,10 +32,6 @@ class DigitalGalleryContentItem < ActiveRecord::Base
 
   def url
     digital_gallery.uri.to_s
-  end
-
-  def thumbnail_url
-    digital_gallery.thumbnail_uri.to_s
   end
 
   def glyphicon
