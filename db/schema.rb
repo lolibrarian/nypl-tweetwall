@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610143210) do
+ActiveRecord::Schema.define(:version => 20130610171217) do
 
   create_table "biblio_commons_list_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20130610143210) do
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "index_digital_gallery_content_matches_on_tweet_and_content_item"
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "unique_digital_gallery_content_match", :unique => true
 
-  create_table "images", :force => true do |t|
+  create_table "remote_images", :force => true do |t|
     t.string   "url",        :limit => 1020, :null => false
     t.integer  "width",                      :null => false
     t.integer  "height",                     :null => false
