@@ -9,7 +9,6 @@ class TweetUrl < ActiveRecord::Base
   validates :original_url,
             :expanded_url,
             :presence => true
-
   validates :original_url,
             :expanded_url,
             :length => {:maximum => 1020}

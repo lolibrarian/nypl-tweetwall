@@ -28,7 +28,6 @@ class Tweet < ActiveRecord::Base
             :status_id,
             :tweet_created_at,
             :presence => true
-
   validate :unexpired?,
            :permitted?,
            :on => :create
