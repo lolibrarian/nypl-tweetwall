@@ -1,5 +1,9 @@
-<ul class="content-items thumbnails">
-  <% @content_items.each_with_index do |content_item, index| %>
-    <%= render :partial => "content_item", :locals => {:content_item => content_item} %>
-  <% end %>
-</ul>
+<% if @content_items.empty? %>
+  <%= render :partial => "no_content_items" %>
+<% else %>
+  <ul class="content-items thumbnails">
+    <% @content_items.each_with_index do |content_item, index| %>
+      <%= render :partial => "content_item", :locals => {:content_item => content_item} %>
+    <% end %>
+  </ul>
+<% end %>

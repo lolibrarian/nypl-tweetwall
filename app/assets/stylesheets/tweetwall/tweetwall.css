@@ -39,3 +39,9 @@ ul {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.no-content-items {
+  display: block;
+  margin: 0 auto 30px auto;
+  width: 650px;
+}
