@@ -2,7 +2,13 @@
 class ContentItem
   # Returns all known content item classes.
   def self.classes
-    [BlogContentItem, BiblioCommonsTitleContentItem, DigitalGalleryContentItem, BiblioCommonsListContentItem]
+    [
+      BlogContentItem,
+      BiblioCommonsTitleContentItem,
+      DigitalGalleryContentItem,
+      BiblioCommonsListContentItem,
+      DigitalCollectionsContentItem
+    ]
   end
 
   # Returns all records from each of the given content item classes, including

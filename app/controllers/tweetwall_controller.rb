@@ -14,7 +14,7 @@ class TweetwallController < ApplicationController
   end
 
   def images
-    tweetwall(DigitalGalleryContentItem)
+    tweetwall(DigitalGalleryContentItem, DigitalCollectionsContentItem)
   end
 
   def books
