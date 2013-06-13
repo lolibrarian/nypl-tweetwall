@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610224144) do
+ActiveRecord::Schema.define(:version => 20130612231927) do
 
   create_table "biblio_commons_list_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false
@@ -70,6 +70,25 @@ ActiveRecord::Schema.define(:version => 20130610224144) do
 
   add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "index_blog_content_matches_on_tweet_id_and_blog_content_item_id"
   add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "unique_blog_content_match", :unique => true
+
+  create_table "digital_collections_content_items", :force => true do |t|
+    t.string   "title",        :limit => 510, :null => false
+    t.integer  "thumbnail_id",                :null => false
+    t.string   "mods_uuid",    :limit => 36,  :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "digital_collections_content_items", ["mods_uuid"], :name => "index_digital_collections_content_items_on_mods_uuid"
+  add_index "digital_collections_content_items", ["mods_uuid"], :name => "unique_mods_uuid", :unique => true
+
+  create_table "digital_collections_content_matches", :force => true do |t|
+    t.integer "tweet_id",                            :null => false
+    t.integer "digital_collections_content_item_id", :null => false
+  end
+
+  add_index "digital_collections_content_matches", ["tweet_id", "digital_collections_content_item_id"], :name => "index_digital_collections_content_matches_on_tweet_and_content"
+  add_index "digital_collections_content_matches", ["tweet_id", "digital_collections_content_item_id"], :name => "unique_digital_collections_content_match", :unique => true
 
   create_table "digital_gallery_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false
