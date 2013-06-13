@@ -4,6 +4,12 @@ module DigitalCollections
       @capture_uuid = capture_uuid
     end
 
+    def thumbnail_uri
+      DigitalGallery.new(image_id).thumbnail_uri
+    end
+
+  private
+
     def captures
       @captures ||= API.get("items/#{@capture_uuid}")["nyplAPI"]["response"]["capture"]
     end
@@ -14,10 +20,6 @@ module DigitalCollections
 
     def image_id
       capture["imageID"]
-    end
-
-    def thumbnail_uri
-      DigitalGallery.new(image_id).thumbnail_uri
     end
   end
 end
