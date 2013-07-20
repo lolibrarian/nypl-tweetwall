@@ -23,6 +23,7 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
   def fetch_metadata
     self.title ||= biblio_commons.title
     self.thumbnail ||= RemoteImage.create(:url => biblio_commons.thumbnail_url)
+    self.format ||= biblio_commons.format
   end
 
   def url

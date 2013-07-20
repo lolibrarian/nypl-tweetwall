@@ -45,5 +45,9 @@ module BiblioCommons
     def isbns
       titles["isbns"]
     end
+
+    def format
+      titles['format']['id']
+    end
   end
 end
