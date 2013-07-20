@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612231927) do
+ActiveRecord::Schema.define(:version => 20130720214341) do
 
   create_table "biblio_commons_list_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130612231927) do
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
     t.integer  "thumbnail_id"
+    t.string   "format",                      :null => false
   end
 
   add_index "biblio_commons_title_content_items", ["title_id"], :name => "index_biblio_commons_title_content_items_on_title_id"

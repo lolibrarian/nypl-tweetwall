@@ -11,6 +11,7 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
   validates :title_id,
             :title,
             :thumbnail_id,
+            :format,
             :presence => true
   validates :title, :length => {:maximum => 510}
 
