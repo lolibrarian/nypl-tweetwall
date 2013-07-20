@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: nypl_tweetwall
-  pool: 5
-  username: paperless
-  password:
+  database: nypl_tweetwall_development
+  username: nypl_tweetwall
+  password: nypl_tweetwall_development
+  host: localhost
