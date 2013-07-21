@@ -35,7 +35,7 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
   end
 
   def glyphicon
-    case format
+    case self.format
     when 'EBOOK'    then 'ipad'
     when 'DVD'      then 'film'
     when 'MUSIC_CD' then 'music'
