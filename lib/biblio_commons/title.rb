@@ -29,9 +29,13 @@ module BiblioCommons
       titles["title"]
     end
 
-    # Returns the first UPC (if present) or ISBN.
+    # Returns the first UPC or ISBN.
     def upc_or_isbn
-      (upcs.present? ? upcs : isbns).first
+      if upcs
+        upcs.first
+      elsif isbns
+        isbns.first
+      end
     end
 
     def thumbnail_url
