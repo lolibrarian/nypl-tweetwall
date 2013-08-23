@@ -3,5 +3,14 @@ development:
   encoding: unicode
   database: nypl_tweetwall_development
   username: nypl_tweetwall
-  password: nypl_tweetwall_development
+  password: nypl_tweetwall
   host: localhost
+  min_messages: WARNING
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: nypl_tweetwall_test
+  username: nypl_tweetwall
+  password: nypl_tweetwall
+  host: localhost
+  min_messages: WARNING
