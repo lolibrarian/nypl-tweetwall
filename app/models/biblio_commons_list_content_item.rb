@@ -32,7 +32,7 @@ class BiblioCommonsListContentItem < ActiveRecord::Base
   end
 
   def biblio_commons
-    @response ||= BiblioCommons::List.new(list_id, user_id)
+    @biblio_commons ||= BiblioCommons::List.new(list_id, user_id)
   end
 
   def glyphicon

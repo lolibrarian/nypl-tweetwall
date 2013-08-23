@@ -31,7 +31,7 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
   end
 
   def biblio_commons
-    @response ||= BiblioCommons::Title.new(title_id)
+    @biblio_commons ||= BiblioCommons::Title.new(title_id)
   end
 
   def glyphicon
