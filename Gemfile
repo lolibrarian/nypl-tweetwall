@@ -43,3 +43,7 @@ gem "airbrake"
 
 # Used to fetch metadata of remote images.
 gem "fastimage"
+
+group :test do
+  gem 'minitest', '~> 4.0'
+end
