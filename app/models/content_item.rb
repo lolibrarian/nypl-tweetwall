@@ -18,7 +18,7 @@ class ContentItem
       klass.includes(:tweets).order("tweets.tweet_created_at DESC").includes(:thumbnail)
     end.flatten
     exclude_without_tweets!(content_items)
-    sort_by_most_recent_tweet!(content_items)
+    sort_by_first_tweet!(content_items)
   end
 
   # Excludes content items without any associated Tweets.
@@ -26,8 +26,8 @@ class ContentItem
     content_items.select! { |content_item| content_item.tweets.any? }
   end
 
-  # Sorts content items by their most recent Tweet.
-  def self.sort_by_most_recent_tweet!(content_items)
+  # Sorts content items by their first Tweet.
+  def self.sort_by_first_tweet!(content_items)
     content_items.sort_by! { |content_item| -1 * content_item.tweets.first.tweet_created_at.to_i }
   end
 
