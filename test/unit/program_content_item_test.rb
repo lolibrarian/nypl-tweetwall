@@ -33,6 +33,23 @@ class ProgramContentItemTest < ActiveSupport::TestCase
     assert_equal 'calendar', @content_item.glyphicon
   end
 
+  def test_thumbnail_non_default
+    without_fetching_remote_images do
+      thumbnail_url = program_stub.thumbnail_url
+      @content_item.thumbnail = RemoteImage.new(:url => thumbnail_url)
+      assert @content_item.thumbnail
+      assert_equal thumbnail_url, @content_item.thumbnail.url
+    end
+  end
+
+  def test_thumbnail_default
+    without_fetching_remote_images do
+      thumbnail_url = Program::DEFAULT_THUMBNAIL_URI.to_s
+      @content_item.thumbnail = RemoteImage.new(:url => thumbnail_url)
+      assert_nil @content_item.thumbnail
+    end
+  end
+
 private
 
   def program_stub

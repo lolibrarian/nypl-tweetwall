@@ -35,4 +35,15 @@ class ProgramContentItem < ActiveRecord::Base
   def glyphicon
     'calendar'
   end
+
+  # If one is assigned, returns the thumbnail (a +RemoteImage+ instance) for
+  # this program. If it's the "default" thumbnail for the NYPL site, returns
+  # +nil+ instead (this is done to de-clutter the Tweetwall). Overrides the
+  # Rails association method.
+  def thumbnail
+    thumbnail = super
+    return unless thumbnail
+
+    thumbnail unless thumbnail.url == Program::DEFAULT_THUMBNAIL_URI.to_s
+  end
 end
