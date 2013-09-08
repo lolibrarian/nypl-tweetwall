@@ -25,6 +25,10 @@ class TweetwallController < ApplicationController
     tweetwall(BiblioCommonsListContentItem)
   end
 
+  def events
+    tweetwall([ProgramContentItem, ExhibitionContentItem])
+  end
+
 private
 
   def tweetwall(classes)
