@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908004104) do
+ActiveRecord::Schema.define(:version => 20130908013942) do
 
   create_table "biblio_commons_list_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer  "thumbnail_id"
   end
 
-  add_index "biblio_commons_list_content_items", ["list_id"], :name => "index_biblio_commons_list_content_items_on_list_id"
   add_index "biblio_commons_list_content_items", ["list_id"], :name => "unique_list_id", :unique => true
 
   create_table "biblio_commons_list_content_matches", :force => true do |t|
@@ -30,7 +29,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer "biblio_commons_list_content_item_id", :null => false
   end
 
-  add_index "biblio_commons_list_content_matches", ["tweet_id", "biblio_commons_list_content_item_id"], :name => "index_biblio_commons_list_content_matches_on_tweet_and_content"
   add_index "biblio_commons_list_content_matches", ["tweet_id", "biblio_commons_list_content_item_id"], :name => "unique_biblio_commons_list_content_match", :unique => true
 
   create_table "biblio_commons_title_content_items", :force => true do |t|
@@ -42,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.string   "format",                      :null => false
   end
 
-  add_index "biblio_commons_title_content_items", ["title_id"], :name => "index_biblio_commons_title_content_items_on_title_id"
   add_index "biblio_commons_title_content_items", ["title_id"], :name => "unique_title_id", :unique => true
 
   create_table "biblio_commons_title_content_matches", :force => true do |t|
@@ -50,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer "biblio_commons_title_content_item_id", :null => false
   end
 
-  add_index "biblio_commons_title_content_matches", ["tweet_id", "biblio_commons_title_content_item_id"], :name => "index_biblio_commons_title_content_matches_on_tweet_and_content"
   add_index "biblio_commons_title_content_matches", ["tweet_id", "biblio_commons_title_content_item_id"], :name => "unique_biblio_commons_title_content_match", :unique => true
 
   create_table "blog_content_items", :force => true do |t|
@@ -61,7 +57,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer  "thumbnail_id"
   end
 
-  add_index "blog_content_items", ["blog_id"], :name => "index_blog_content_items_on_blog_id"
   add_index "blog_content_items", ["blog_id"], :name => "unique_blog_id", :unique => true
 
   create_table "blog_content_matches", :force => true do |t|
@@ -69,7 +64,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer "blog_content_item_id", :null => false
   end
 
-  add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "index_blog_content_matches_on_tweet_id_and_blog_content_item_id"
   add_index "blog_content_matches", ["tweet_id", "blog_content_item_id"], :name => "unique_blog_content_match", :unique => true
 
   create_table "digital_collections_content_items", :force => true do |t|
@@ -80,7 +74,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.datetime "updated_at",                  :null => false
   end
 
-  add_index "digital_collections_content_items", ["mods_uuid"], :name => "index_digital_collections_content_items_on_mods_uuid"
   add_index "digital_collections_content_items", ["mods_uuid"], :name => "unique_mods_uuid", :unique => true
 
   create_table "digital_collections_content_matches", :force => true do |t|
@@ -88,7 +81,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer "digital_collections_content_item_id", :null => false
   end
 
-  add_index "digital_collections_content_matches", ["tweet_id", "digital_collections_content_item_id"], :name => "index_digital_collections_content_matches_on_tweet_and_content"
   add_index "digital_collections_content_matches", ["tweet_id", "digital_collections_content_item_id"], :name => "unique_digital_collections_content_match", :unique => true
 
   create_table "digital_gallery_content_items", :force => true do |t|
@@ -99,7 +91,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer  "thumbnail_id"
   end
 
-  add_index "digital_gallery_content_items", ["image_id"], :name => "index_digital_gallery_content_items_on_image_id"
   add_index "digital_gallery_content_items", ["image_id"], :name => "unique_image_id", :unique => true
 
   create_table "digital_gallery_content_matches", :force => true do |t|
@@ -107,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer "digital_gallery_content_item_id", :null => false
   end
 
-  add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "index_digital_gallery_content_matches_on_tweet_and_content_item"
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "unique_digital_gallery_content_match", :unique => true
 
   create_table "exhibition_content_items", :force => true do |t|
@@ -174,7 +164,6 @@ ActiveRecord::Schema.define(:version => 20130908004104) do
     t.integer  "retweeted_status_id", :limit => 8
   end
 
-  add_index "tweets", ["status_id"], :name => "index_tweets_on_status_id"
   add_index "tweets", ["status_id"], :name => "unique_status_id", :unique => true
 
 end
