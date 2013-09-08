@@ -6,34 +6,34 @@ class BiblioCommonsListContentItemTest < ActiveSupport::TestCase
   end
 
   def test_fetch_metadata_user_id
-    @content_item.stub(:biblio_commons, biblio_commons_mock) do
+    @content_item.stub(:biblio_commons, biblio_commons_stub) do
       assert_nil @content_item.user_id
       @content_item.fetch_metadata
-      assert_equal biblio_commons_mock.user_id, @content_item.user_id
+      assert_equal biblio_commons_stub.user_id, @content_item.user_id
     end
   end
 
   def test_fetch_metadata_title
-    @content_item.stub(:biblio_commons, biblio_commons_mock) do
+    @content_item.stub(:biblio_commons, biblio_commons_stub) do
       assert_nil @content_item.title
       @content_item.fetch_metadata
-      assert_equal biblio_commons_mock.name, @content_item.title
+      assert_equal biblio_commons_stub.name, @content_item.title
     end
   end
 
   def test_fetch_metadata_thumbnail
     without_fetching_remote_images do
-      @content_item.stub(:biblio_commons, biblio_commons_mock) do
+      @content_item.stub(:biblio_commons, biblio_commons_stub) do
         assert_nil @content_item.thumbnail
         @content_item.fetch_metadata
-        assert_equal biblio_commons_mock.thumbnail_url, @content_item.thumbnail.url
+        assert_equal biblio_commons_stub.thumbnail_url, @content_item.thumbnail.url
       end
     end
   end
 
   def test_url
-    @content_item.stub(:biblio_commons, biblio_commons_mock) do
-      assert_equal biblio_commons_mock.url, @content_item.url
+    @content_item.stub(:biblio_commons, biblio_commons_stub) do
+      assert_equal biblio_commons_stub.url, @content_item.url
     end
   end
 
@@ -41,9 +41,9 @@ class BiblioCommonsListContentItemTest < ActiveSupport::TestCase
     assert_equal 'sort', @content_item.glyphicon
   end
 
-# Test mocks.
+private
 
-  def biblio_commons_mock
+  def biblio_commons_stub
     OpenStruct.new(
       :user_id       => 42,
       :name          => 'Top 10 Great American Novels',
