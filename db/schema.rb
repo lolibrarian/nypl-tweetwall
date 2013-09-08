@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720214341) do
+ActiveRecord::Schema.define(:version => 20130908004104) do
 
   create_table "biblio_commons_list_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false
@@ -109,6 +109,40 @@ ActiveRecord::Schema.define(:version => 20130720214341) do
 
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "index_digital_gallery_content_matches_on_tweet_and_content_item"
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "unique_digital_gallery_content_match", :unique => true
+
+  create_table "exhibition_content_items", :force => true do |t|
+    t.string   "title",         :limit => 510, :null => false
+    t.integer  "thumbnail_id",                 :null => false
+    t.string   "exhibition_id",                :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "exhibition_content_items", ["exhibition_id"], :name => "index_exhibition_content_items_on_exhibition_id", :unique => true
+
+  create_table "exhibition_content_matches", :force => true do |t|
+    t.integer "tweet_id",                   :null => false
+    t.integer "exhibition_content_item_id", :null => false
+  end
+
+  add_index "exhibition_content_matches", ["tweet_id", "exhibition_content_item_id"], :name => "unique_exhibition_content_match", :unique => true
+
+  create_table "program_content_items", :force => true do |t|
+    t.string   "title",        :limit => 510, :null => false
+    t.integer  "thumbnail_id",                :null => false
+    t.string   "program_id",                  :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "program_content_items", ["program_id"], :name => "index_program_content_items_on_program_id", :unique => true
+
+  create_table "program_content_matches", :force => true do |t|
+    t.integer "tweet_id",                :null => false
+    t.integer "program_content_item_id", :null => false
+  end
+
+  add_index "program_content_matches", ["tweet_id", "program_content_item_id"], :name => "unique_program_content_match", :unique => true
 
   create_table "remote_images", :force => true do |t|
     t.string   "url",        :limit => 1020, :null => false

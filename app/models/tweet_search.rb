@@ -7,7 +7,9 @@ class TweetSearch
       BiblioCommonsTitleTweetSearch,
       DigitalGalleryTweetSearch,
       BiblioCommonsListTweetSearch,
-      DigitalCollectionsTweetSearch
+      DigitalCollectionsTweetSearch,
+      ProgramTweetSearch,
+      ExhibitionTweetSearch
     ]
   end
 

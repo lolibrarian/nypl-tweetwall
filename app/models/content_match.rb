@@ -7,7 +7,9 @@ module ContentMatch
       BiblioCommonsTitleContentMatch,
       DigitalGalleryContentMatch,
       BiblioCommonsListContentMatch,
-      DigitalCollectionsContentMatch
+      DigitalCollectionsContentMatch,
+      ProgramContentMatch,
+      ExhibitionContentMatch
     ]
   end
 

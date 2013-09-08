@@ -7,7 +7,9 @@ class ContentItem
       BiblioCommonsTitleContentItem,
       DigitalGalleryContentItem,
       BiblioCommonsListContentItem,
-      DigitalCollectionsContentItem
+      DigitalCollectionsContentItem,
+      ProgramContentItem,
+      ExhibitionContentItem
     ]
   end
 
