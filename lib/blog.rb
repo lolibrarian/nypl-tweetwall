@@ -1,4 +1,6 @@
 class Blog
+  include NYPLContentType
+
   BASE_URI = URI.parse("http://www.nypl.org/blog/")
 
   # Extracts a NYPL Blogs ID from the given URL.
@@ -10,25 +12,5 @@ class Blog
     return if matches.nil?
 
     matches.first
-  end
-
-  def initialize(id)
-    @id = id
-  end
-
-  def uri
-    BASE_URI + @id
-  end
-
-  def document
-    @document ||= Nokogiri::HTML(open uri)
-  end
-
-  def title
-    document.title.split("|").first.strip
-  end
-
-  def thumbnail_url
-    document.xpath("//meta[@property='og:image']/@content").to_s
   end
 end
