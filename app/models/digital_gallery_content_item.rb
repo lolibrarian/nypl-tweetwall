@@ -1,5 +1,3 @@
-require "open-uri"
-
 class DigitalGalleryContentItem < ActiveRecord::Base
   include Expirable
 

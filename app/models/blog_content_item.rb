@@ -1,5 +1,3 @@
-require "open-uri"
-
 class BlogContentItem < ActiveRecord::Base
   include Expirable
 

@@ -1,7 +1,3 @@
-require "uri"
-require "open-uri"
-require "json"
-
 # BiblioCommons API documentation: http://developer.bibliocommons.com/docs
 module BiblioCommons
   module API

@@ -1,5 +1,3 @@
-require "open-uri"
-
 class TweetUrl < ActiveRecord::Base
   belongs_to :tweet
 

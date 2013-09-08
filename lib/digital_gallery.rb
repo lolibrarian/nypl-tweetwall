@@ -1,6 +1,3 @@
-require "uri"
-require "open-uri"
-
 class DigitalGallery
   BASE_SEARCH_URI = URI.parse("http://digitalgallery.nypl.org/nypldigital/dgkeysearchdetail.cfm")
   BASE_IMAGE_URI = URI.parse("http://images.nypl.org/index.php")
