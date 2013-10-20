@@ -38,6 +38,9 @@ gem "unicorn"
 # A memcached client.
 gem "dalli"
 
+# A memcached manager.
+gem 'memcachier'
+
 # Used to report errors.
 gem "airbrake"
 
