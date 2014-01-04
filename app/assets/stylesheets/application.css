@@ -13,11 +13,3 @@
  *= require bootstrap.icon-large
  *= require_tree .
  */
-
-body {
-  background-color: #ddd !important;
-}
-
-nav a {
-  font-size: 20px;
-}

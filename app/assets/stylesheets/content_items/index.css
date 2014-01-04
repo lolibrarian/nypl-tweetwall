@@ -1,0 +1,232 @@
+body {
+  background-color: #ddd !important;
+}
+
+html {
+  /* Always display vertical scroll bar so when Content Items appear, header
+  /* isn't suddenly shifted over. */
+  overflow-y: scroll;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+header {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.logo {
+  height: 113px;
+  width: 200px;
+}
+
+nav {
+  margin-bottom: 16px;
+}
+
+nav ul {
+  /* Center the navigation choices within the page. */
+  display: table;
+  margin: 0 auto !important;
+  /* Center the navigation choices within the nav element (when wrapped). */
+  text-align: center;
+}
+
+nav li {
+  /* Override how Bootstrap styles horizontal lists to support centering them. */
+  float: none !important;
+  display: inline-block;
+}
+
+nav.affix {
+  z-index: 1;
+  left: 0;
+  width: 100%;
+}
+
+/* Navigation for desktop browsers:; create a pill-shaped transparent container. */
+@media screen and (min-width: 480px) {
+  nav {
+    font-size: 20px;
+  }
+
+  nav ul {
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+         -o-border-radius: 8px;
+            border-radius: 8px;
+    background-color: #ddd;
+    background-color: rgba(221, 221, 221, 0.9);
+    padding: 8px;
+  }
+
+  nav.affix {
+    top: 4px;
+  }
+}
+
+/* Navigation for mobile browsers: attempt to maximize available space instead. */
+@media screen and (max-width: 480px) {
+  nav {
+    font-size: 16px;
+  }
+
+  nav ul {
+    padding: 4px;
+  }
+
+  nav.affix {
+    background-color: #ddd;
+    background-color: rgba(221, 221, 221, 0.9);
+    top: 0;
+  }
+}
+
+.alert {
+  display: table;
+  margin: 24px auto 0 auto;
+}
+
+.content-items {
+  margin: 0 auto;
+}
+
+.content-item {
+  /* Hide Content Items initially. */
+  display: none;
+
+  float: left;
+  margin: 10px 10px 40px 10px;
+
+  -webkit-box-shadow: 0px 0px 10px -1px #848484;
+     -moz-box-shadow: 0px 0px 10px -1px #848484;
+      -ms-box-shadow: 0px 0px 10px -1px #848484;
+       -o-box-shadow: 0px 0px 10px -1px #848484;
+          box-shadow: 0px 0px 10px -1px #848484;
+
+  /* Disable transition directives inherited from Bootstrap. */
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+
+  background-color: #fff;
+  padding: 10px 10px 0px 10px;
+  width: 300px;
+}
+
+.content-item:hover {
+  -webkit-box-shadow: 0px 0px 10px 2px #848484;
+     -moz-box-shadow: 0px 0px 10px 2px #848484;
+      -ms-box-shadow: 0px 0px 10px 2px #848484;
+       -o-box-shadow: 0px 0px 10px 2px #848484;
+          box-shadow: 0px 0px 10px 2px #848484;
+}
+
+.content-item.masonry-positioned {
+  /* Display Content Items only *after* they've been positioned by Masonry. */
+  display: block;
+
+  -webkit-animation: fade-in 1s;
+     -moz-animation: fade-in 1s;
+      -ms-animation: fade-in 1s;
+       -o-animation: fade-in 1s;
+          animation: fade-in 1s;
+
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+
+  -webkit-transition-property: left, top;
+     -moz-transition-property: left, top;
+      -ms-transition-property: left, top;
+       -o-transition-property: left, top;
+          transition-property: left, top;
+}
+
+@-webkit-keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-ms-keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.infinite-scroll {
+  /* Although it will be positioned by Masonry, don't animate the hidden
+  /* infinite scroll element. */
+  -webkit-transition: none !important;
+     -moz-transition: none !important;
+      -ms-transition: none !important;
+       -o-transition: none !important;
+          transition: none !important;
+
+  padding: 0;
+  height: 0;
+}
+
+.content-item img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-item h3 {
+  padding: 10px 20px 10px 20px;
+  line-height: 30px;
+}
+
+.tweet {
+  margin-bottom: 10px;
+}
+
+.tweet .profile-image {
+  height: 48px;
+  width: 48px;
+}
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+
+.more-content-items {
+  display: block;
+  margin: auto;
+  outline: 0 !important;
+}
+
+footer {
+  margin-bottom: 40px;
+  font-size: 20px;
+  text-align: center;
+}

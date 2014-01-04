@@ -3,26 +3,26 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
 
   has_many :biblio_commons_title_content_matches, :dependent => :destroy
   has_many :tweets, :through => :biblio_commons_title_content_matches
-  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy
+  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy, :autosave => true
 
   attr_accessible :title_id,
                   :title
 
   validates :title_id,
             :title,
-            :thumbnail_id,
+            :thumbnail,
             :format,
             :presence => true
   validates :title, :length => {:maximum => 510}
 
   before_validation :fetch_metadata
 
-  expires_in 1.hour
+  expires_in 1.day
 
   # Fetches additional metadata associated with the item.
   def fetch_metadata
     self.title ||= biblio_commons.title
-    self.thumbnail ||= RemoteImage.create(:url => biblio_commons.thumbnail_url)
+    self.thumbnail ||= RemoteImage.new(:url => biblio_commons.thumbnail_url)
     self.format ||= biblio_commons.format
   end
 
@@ -41,5 +41,9 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
     when 'MUSIC_CD' then 'music'
     else                 'book-open'
     end
+  end
+
+  def category
+    'books'
   end
 end

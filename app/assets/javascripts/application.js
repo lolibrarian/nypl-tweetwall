@@ -12,6 +12,14 @@
 //
 //= require jquery
 //= require jquery.masonry
+//= require angular
+//= require angular/modules/affix
+//= require angular/modules/angular-moment
+//= require angular/modules/debounce
+//= require angular/modules/masonry
+//= require angular/modules/ng-infinite-scroll
+//= require angular/tweetwall
 //= require bootstrap
+//= require moment
 //= require google_analytics
 //= require_tree .

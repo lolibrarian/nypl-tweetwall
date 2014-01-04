@@ -3,7 +3,7 @@ class BiblioCommonsListContentItem < ActiveRecord::Base
 
   has_many :biblio_commons_list_content_matches, :dependent => :destroy
   has_many :tweets, :through => :biblio_commons_list_content_matches
-  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy
+  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy, :autosave => true
 
   attr_accessible :list_id,
                   :title,
@@ -12,7 +12,7 @@ class BiblioCommonsListContentItem < ActiveRecord::Base
   validates :list_id,
             :title,
             :user_id,
-            :thumbnail_id,
+            :thumbnail,
             :presence => true
   validates :title, :length => {:maximum => 510}
 
@@ -24,7 +24,7 @@ class BiblioCommonsListContentItem < ActiveRecord::Base
   def fetch_metadata
     self.user_id ||= biblio_commons.user_id
     self.title ||= biblio_commons.name
-    self.thumbnail ||= RemoteImage.create(:url => biblio_commons.thumbnail_url)
+    self.thumbnail ||= RemoteImage.new(:url => biblio_commons.thumbnail_url)
   end
 
   def url
@@ -37,5 +37,9 @@ class BiblioCommonsListContentItem < ActiveRecord::Base
 
   def glyphicon
     "sort"
+  end
+
+  def category
+    'lists'
   end
 end

@@ -3,14 +3,14 @@ class ExhibitionContentItem < ActiveRecord::Base
 
   has_many :exhibition_content_matches, :dependent => :destroy
   has_many :tweets, :through => :exhibition_content_matches
-  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy
+  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy, :autosave => true
 
   attr_accessible :exhibition_id,
                   :title
 
   validates :exhibition_id,
             :title,
-            :thumbnail_id,
+            :thumbnail,
             :presence => true
   validates :title, :length => {:maximum => 510}
 
@@ -21,7 +21,7 @@ class ExhibitionContentItem < ActiveRecord::Base
   # Fetches additional metadata associated with the exhibition.
   def fetch_metadata
     self.title ||= exhibition.title
-    self.thumbnail ||= RemoteImage.create(:url => exhibition.thumbnail_url)
+    self.thumbnail ||= RemoteImage.new(:url => exhibition.thumbnail_url)
   end
 
   def exhibition
@@ -34,5 +34,9 @@ class ExhibitionContentItem < ActiveRecord::Base
 
   def glyphicon
     'calendar'
+  end
+
+  def category
+    'events'
   end
 end

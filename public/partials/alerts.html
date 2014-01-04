@@ -1,0 +1,15 @@
+<div class='alerts'>
+  <div data-ng-show='getServerError()' class='alert alert-danger'>
+    <h3>Oops! An error occurred loading the Tweets.</h3>
+    <p>Please try back again later. Status code: {{ getServerError() }}.</p>
+  </div>
+</div>
+
+<div data-ng-show='contentItems.length === 0' class='alert alert-info'>
+  <h3>Oops! There are no Tweets to display here.</h3>
+  <p>
+    Tweet links to your favorite
+    <strong><a href='http://www.nypl.org/'>New York Public Library</a></strong>
+    books, images, and blog posts to get on the wall!
+  </p>
+</div>

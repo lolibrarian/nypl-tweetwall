@@ -8,7 +8,9 @@ class Tweetwall
 
   # Warms the Tweetwall action cache.
   def self.warm
-    urls.each { |url| `curl --silent --get --head #{url}` }
+    urls.each do |url|
+      system "curl --silent --verbose #{url} --output /dev/null"
+    end
   end
 
   # Returns all URLs for the application.
@@ -18,11 +20,19 @@ class Tweetwall
 
   # Returns the base WWW URL for the Tweetwall.
   def self.www_url
-    ENV["WWW_URL"] || "http://localhost"
+    ENV["WWW_URL"] || 'http://localhost:3000'
   end
 
   # Returns all unique paths for the application.
   def self.paths
-    Rails.application.routes.routes.map { |route| route.path.spec.left.to_s }.uniq
+    %w(
+      /
+      api/content_items/all
+      api/content_items/blogs
+      api/content_items/images
+      api/content_items/books
+      api/content_items/lists
+      api/content_items/events
+    )
   end
 end

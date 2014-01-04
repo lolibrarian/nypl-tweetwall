@@ -41,7 +41,15 @@ module BiblioCommons
     def thumbnail_url
       return unless list_items.any?
 
-      title = Title.new(list_items.first["title"]["id"])
+      # Find the first "title" list item (lists can comprise of more than just
+      # physical items, for example, URLs).
+      title_list_item = list_items.find do |list_item|
+        list_item['list_item_type'] == 'title'
+      end
+
+      return unless title_list_item
+
+      title = Title.new(title_list_item['title']['id'])
       title.thumbnail_url
     end
   end

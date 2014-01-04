@@ -1,0 +1,7 @@
+<nav data-affix>
+  <ul class="nav nav-pills">
+    <li data-ng-repeat='category in categories' class='{{ classForCategorySlug(category.slug) }}'>
+      <a data-ng-click='setCategorySlug(category.slug)'>{{ category.name }}</a>
+    </li>
+  </ul>
+</nav>

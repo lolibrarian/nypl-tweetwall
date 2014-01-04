@@ -3,14 +3,14 @@ class BlogContentItem < ActiveRecord::Base
 
   has_many :blog_content_matches, :dependent => :destroy
   has_many :tweets, :through => :blog_content_matches
-  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy
+  belongs_to :thumbnail, :class_name => RemoteImage, :dependent => :destroy, :autosave => true
 
   attr_accessible :blog_id,
                   :title
 
   validates :blog_id,
             :title,
-            :thumbnail_id,
+            :thumbnail,
             :presence => true
   validates :title, :length => {:maximum => 510}
 
@@ -21,7 +21,7 @@ class BlogContentItem < ActiveRecord::Base
   # Fetches additional metadata associated with the blog.
   def fetch_metadata
     self.title ||= blog.title
-    self.thumbnail ||= RemoteImage.create(:url => blog.thumbnail_url)
+    self.thumbnail ||= RemoteImage.new(:url => blog.thumbnail_url)
   end
 
   def blog
@@ -34,5 +34,9 @@ class BlogContentItem < ActiveRecord::Base
 
   def glyphicon
     "comment"
+  end
+
+  def category
+    'blogs'
   end
 end

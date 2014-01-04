@@ -32,7 +32,7 @@ class Tweet < ActiveRecord::Base
            :permitted?,
            :on => :create
 
-  expires_in 3.days, :tweet_created_at
+  expires_in 7.days, :tweet_created_at
 
   scope :blocked, where("screen_name IN (?)", SCREEN_NAME_BLACKLIST)
 
@@ -52,25 +52,5 @@ class Tweet < ActiveRecord::Base
 
   def url
     "#{profile_url}/status/#{status_id}"
-  end
-
-  def retweet?
-    retweeted_status_id?
-  end
-
-  # Returns +true+ if the tweet ought to be truncated within the given set of
-  # tweets. The rules are:
-  #
-  #   1. If it's not a retweet, do not truncate.
-  #
-  #   2. If it is a retweet, and the retweeted tweet is *not* the given set,
-  #      do not truncate.
-  #
-  #   3. Otherwise, truncate.
-  #
-  def truncate?(tweets)
-    return false unless retweet?
-
-    tweets.find { |tweet| tweet.status_id == self.retweeted_status_id }
   end
 end

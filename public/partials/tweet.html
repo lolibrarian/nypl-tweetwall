@@ -1,0 +1,16 @@
+<div class='tweet media'>
+  <a href='{{ tweet.profile_url }}' class='pull-left'>
+    <img data-ng-src='{{ tweet.profile_image_url }}' class='profile-image media-object img-circle' alt="{{ tweet.screen_name }}'s profile image">
+  </a>
+
+  <div class='media-body'>
+    <h4 class='media-heading'>{{ tweet.user_name }}
+      <a href='{{ tweet.profile_url }}'> @{{ tweet.screen_name }}</a>
+    </h4>
+    <p class='{{ tweet.klass }}'>
+      {{ tweet.text }}
+    </p>
+
+    <a href='{{ tweet.url }}' data-am-time-ago='tweet.tweet_created_at'></a>
+  </div>
+</div>

@@ -15,12 +15,13 @@ class ContentItem
 
   # Returns all records from each of the given content item classes, including
   # (and sorted by) their associated Tweets.
-  def self.all_including_and_sorted_by_tweets(classes)
+  def self.all_including_and_sorted_by_tweets(classes, limit = 100)
     content_items = Array(classes).map do |klass|
       klass.includes(:tweets).order("tweets.tweet_created_at DESC").includes(:thumbnail)
     end.flatten
     exclude_without_tweets!(content_items)
     sort_by_first_tweet!(content_items)
+    content_items.take(limit)
   end
 
   # Excludes content items without any associated Tweets.
