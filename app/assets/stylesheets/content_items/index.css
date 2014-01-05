@@ -26,8 +26,8 @@ header {
   width: 200px;
 }
 
-nav {
-  margin-bottom: 16px;
+.nav-wrapper {
+  min-height: 66px;
 }
 
 nav ul {
