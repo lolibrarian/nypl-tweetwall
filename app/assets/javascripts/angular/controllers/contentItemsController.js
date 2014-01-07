@@ -45,9 +45,10 @@ app.controller('ContentItemsController', function ($scope,
   }
 
   function initializePagination() {
-    $scope.$on('navigation', paginationService.reset);
+    $scope.$on('navigation', paginationService.resetLimit);
     $scope.getLimit = paginationService.getLimit;
-    $scope.debouncedNextPage = paginationService.debouncedNextPage;
+    $scope.throttledNextPage = paginationService.throttledNextPage;
+    $scope.paginationThrottled = paginationService.paginationThrottled;
   }
 
   function initializeMasonry() {

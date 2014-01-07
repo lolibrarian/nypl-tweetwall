@@ -219,10 +219,8 @@ nav.affix {
   width: 200px;
 }
 
-.more-content-items {
-  display: block;
-  margin: auto;
-  outline: 0 !important;
+.loading {
+  margin: 0 auto;
 }
 
 footer {

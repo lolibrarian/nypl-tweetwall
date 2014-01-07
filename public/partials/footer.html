@@ -1,7 +1,7 @@
 <footer data-ng-show='showFooter'>
-  <button class='more-content-items btn btn-large' data-ng-show='moreContentItems = (getLimit() < contentItems.length)' data-ng-click='debouncedNextPage()'>Show More</button>
+  <img data-ng-show='showLoading = (getLimit() < contentItems.length)' class='loading' src='img/loading.gif' alt='Loading indicator' />
 
-  <div data-ng-hide='moreContentItems'>
+  <div data-ng-hide='showLoading'>
     <p>Content from <a href="http://twitter.com/">Twitter</a> and <a href="http://www.nypl.org/">The New York Public Library</a>.</p>
     <p>
       Source available on <a href="https://github.com/lolibrarian/nypl-tweetwall">GitHub</a>. Icons from <a href="http://glyphicons.com/">GLYPHICONS</a>.
