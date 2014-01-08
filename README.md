@@ -1,8 +1,8 @@
 # NYPL Tweetwall
 
-The NYPL Tweetwall presents content from library collections that are currently being discussed on Twitter.
+The NYPL Tweetwall presents content from library collections that are currently being discussed on Twitter. See it in action [here](http://nypl-tweetwall.herokuapp.com)!
 
-See it in action at: http://nypl-tweetwall.herokuapp.com
+<img width=600 src='https://f.cloud.github.com/assets/544541/1869229/effaed8e-7877-11e3-964e-af7080a71a7a.png' alt='Screenshot of NYPL Tweetwall' />
 
 ## Configuration
 
@@ -23,14 +23,34 @@ They're passed via environment variables to the application, so creating a `.env
 
 ## Updating
 
-There is one Rake task responsible for updating the Tweetwall:
+There is [one Rake task](https://github.com/lolibrarian/nypl-tweetwall/blob/master/lib/tasks/tweetwall.rake) responsible for updating the Tweetwall:
 
-    foreman run rake tweetwall:update
+```bash
+foreman run rake tweetwall:update
+```
 
 It performs the following sub-tasks:
 
-  * Deleting expired content
-  * Deleting expired Tweets
-  * Checking for new Tweets
-  * Adding new content
-  * Expiring and re-warming the cache
+  * Deletes expired content
+  * Deletes expired Tweets
+  * Checks for new Tweets
+  * Adds new content
+  * Expires and warms the cache
+
+## Contributing
+
+Bug reports, fixes, and new features are welcomed. If you'd like to contribute code, please:
+
+  1. Fork the project
+
+  2. Start a branch named for your new feature or bug
+
+  3. Run (and add to, if possible) the unit tests:
+
+    ```bash
+    bundle exec rake test
+    ```
+
+  4. Create a Pull Request
+
+Thank you!
