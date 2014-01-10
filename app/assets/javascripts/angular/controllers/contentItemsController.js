@@ -17,7 +17,6 @@ app.controller('ContentItemsController', function ($scope,
     initializeContentItems();
     initializePagination();
     initializeMasonry();
-    initializeFooter();
     navigationService.setCategorySlug('all');
   }
 
@@ -53,8 +52,6 @@ app.controller('ContentItemsController', function ($scope,
 
   function initializeMasonry() {
     masonryService.onPosition(function () {
-      $scope.$emit('masonry');
-
       // Add a class to positioned bricks for styling purposes. A timeout is
       // used so CSS transition directives are applied only *after* the initial
       // positioning.
@@ -63,22 +60,6 @@ app.controller('ContentItemsController', function ($scope,
       $timeout(function () {
         bricks.addClass('masonry-positioned');
       }, 0);
-    });
-  }
-
-  function initializeFooter() {
-    // Hide the footer in the period between navigating and a result, whether it
-    // be Content Items (positioned with Masonry) or an alert.
-    $scope.$on('navigation', function () {
-      $scope.showFooter = false;
-    });
-
-    $scope.$on('masonry', function () {
-      $scope.showFooter = true;
-    });
-
-    $scope.$on('alert', function () {
-      $scope.showFooter = true;
     });
   }
 

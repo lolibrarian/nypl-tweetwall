@@ -1,10 +1,8 @@
-<footer data-ng-show='showFooter'>
-  <img data-ng-show='showLoading = (getLimit() < contentItems.length)' class='loading' src='img/loading.gif' alt='Loading indicator' />
+<img data-ng-hide='showFooter' class='loading' src='img/loading.gif' alt='Loading indicator' />
 
-  <div data-ng-hide='showLoading'>
-    <p>Content from <a href="http://twitter.com/">Twitter</a> and <a href="http://www.nypl.org/">The New York Public Library</a>.</p>
-    <p>
-      Source available on <a href="https://github.com/lolibrarian/nypl-tweetwall">GitHub</a>. Icons from <a href="http://glyphicons.com/">GLYPHICONS</a>.
-    </p>
-  </div>
+<footer data-ng-show='showFooter = (getLimit() > contentItems.length)'>
+  <p>Content from <a href="http://twitter.com/">Twitter</a> and <a href="http://www.nypl.org/">The New York Public Library</a>.</p>
+  <p>
+    Source available on <a href="https://github.com/lolibrarian/nypl-tweetwall">GitHub</a>. Icons from <a href="http://glyphicons.com/">GLYPHICONS</a>.
+  </p>
 </footer>

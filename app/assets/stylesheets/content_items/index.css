@@ -220,7 +220,8 @@ nav.affix {
 }
 
 .loading {
-  margin: 0 auto;
+  display: table;
+  margin: 0 auto 40px;
 }
 
 footer {
