@@ -1,5 +1,9 @@
 # NYPL Tweetwall
 
+<a href='https://codeclimate.com/github/lolibrarian/nypl-tweetwall'>
+  <img src='https://codeclimate.com/github/lolibrarian/nypl-tweetwall.png' alt='Code Climate rating' />
+</a>
+
 The NYPL Tweetwall presents content from library collections that are currently being discussed on Twitter. See it in action [here](http://nypl-tweetwall.herokuapp.com)!
 
 <img width=600 src='https://f.cloud.github.com/assets/544541/1869229/effaed8e-7877-11e3-964e-af7080a71a7a.png' alt='Screenshot of NYPL Tweetwall' />
