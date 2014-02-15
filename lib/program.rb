@@ -2,6 +2,7 @@ class Program
   include NYPLContentType
 
   BASE_URI = URI.parse("http://www.nypl.org/events/programs/")
+  CONTENT_SELECTOR = '.node-event_program'
 
   # Extracts a NYPL program ID from the given URL.
   def self.id_from_url(url)

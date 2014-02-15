@@ -17,7 +17,20 @@ module NYPLContentType
     document.title.split('|').first.strip
   end
 
+  # Returns an element for the content in the document (ex. the blog post
+  # itself, excluding navigation, sidebars, footer, etc.).
+  def content
+    document.css(self.class::CONTENT_SELECTOR)
+  end
+
+  # Returns an element for the first image in the content.
+  def first_image_in_content
+    @first_image_in_content ||= content.css('img').first
+  end
+
   def thumbnail_url
-    document.xpath("//meta[@property='og:image']/@content").to_s
+    return unless first_image_in_content
+
+    first_image_in_content['src']
   end
 end
