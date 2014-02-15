@@ -20,16 +20,18 @@ class ProgramTest < ActiveSupport::TestCase
   end
 
   def test_title
-    program = Program.new('2013/09/17/yoga-seniors')
+    program = Program.new('2014/02/15/disney-family-film-petes-dragon')
     program.stub(:document, document_stub) do
-      assert_equal 'Yoga for Seniors', program.title
+      assert_equal "DISNEY FAMILY FILM - PETE'S DRAGON", program.title
     end
   end
 
   def test_thumbnail_url
-    program = Program.new('2013/09/17/yoga-seniors')
+    expected_thumbnail_url = 'http://cdn-prod.www.aws.nypl.org/sites/default/' +
+                             'files/images/petes_dragon.inline vertical.jpg'
+    program = Program.new('2014/02/15/disney-family-film-petes-dragon')
     program.stub(:document, document_stub) do
-      assert_equal 'http://images.nypl.org/?id=1531664 &t=w', program.thumbnail_url
+      assert_equal expected_thumbnail_url, program.thumbnail_url
     end
   end
 

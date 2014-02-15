@@ -20,16 +20,18 @@ class ExhibitionTest < ActiveSupport::TestCase
   end
 
   def test_title
-    exhibition = Exhibition.new('breaking-barriers-ata-and-black-tennis-pioneers')
+    exhibition = Exhibition.new('abc-it')
     exhibition.stub(:document, document_stub) do
-      assert_equal 'Breaking the Barriers: The ATA and Black Tennis Pioneers', exhibition.title
+      assert_equal "The ABC of It: Why Children's Books Matter", exhibition.title
     end
   end
 
   def test_thumbnail_url
-    exhibition = Exhibition.new('breaking-barriers-ata-and-black-tennis-pioneers')
+    expected_thumbnail_url = 'http://cdn-prod.www.aws.nypl.org/sites/default/' +
+                             'files/images/cow-over-moon.jpg'
+    exhibition = Exhibition.new('abc-it')
     exhibition.stub(:document, document_stub) do
-      assert_equal 'http://www.nypl.org/sites/default/files/images/arthur_ashe.inline vertical.jpg', exhibition.thumbnail_url
+      assert_equal expected_thumbnail_url, exhibition.thumbnail_url
     end
   end
 
