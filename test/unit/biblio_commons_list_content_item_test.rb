@@ -37,10 +37,6 @@ class BiblioCommonsListContentItemTest < ActiveSupport::TestCase
     end
   end
 
-  def test_glyphicon
-    assert_equal 'sort', @content_item.glyphicon
-  end
-
 private
 
   def biblio_commons_stub

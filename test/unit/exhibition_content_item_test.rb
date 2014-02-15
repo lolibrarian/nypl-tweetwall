@@ -29,10 +29,6 @@ class ExhibitionContentItemTest < ActiveSupport::TestCase
     end
   end
 
-  def test_glyphicon
-    assert_equal 'calendar', @content_item.glyphicon
-  end
-
 private
 
   def exhibition_stub

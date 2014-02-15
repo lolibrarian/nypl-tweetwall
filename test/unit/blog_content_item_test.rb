@@ -29,10 +29,6 @@ class BlogContentItemTest < ActiveSupport::TestCase
     end
   end
 
-  def test_glyphicon
-    assert_equal 'comment', @content_item.glyphicon
-  end
-
 private
 
   def blog_stub
