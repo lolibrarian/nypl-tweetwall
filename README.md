@@ -1,5 +1,9 @@
 # NYPL Tweetwall
 
+<a href='https://travis-ci.org/lolibrarian/nypl-tweetwall'>
+  <img src='https://api.travis-ci.org/lolibrarian/nypl-tweetwall.png' alt='Travis CI build status' />
+</a>
+
 <a href='https://codeclimate.com/github/lolibrarian/nypl-tweetwall'>
   <img src='https://codeclimate.com/github/lolibrarian/nypl-tweetwall.png' alt='Code Climate rating' />
 </a>
