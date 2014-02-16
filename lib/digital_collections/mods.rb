@@ -18,7 +18,8 @@ module DigitalCollections
     end
 
     def title
-      mods["titleInfo"].last["title"]["$"]
+      titles = [mods['titleInfo']].flatten
+      titles.last['title']['$']
     end
 
     def thumbnail_uri

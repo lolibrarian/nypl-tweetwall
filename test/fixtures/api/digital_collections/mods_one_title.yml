@@ -1,0 +1,43 @@
+---
+version: '3.4'
+schemaLocation: http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd
+titleInfo:
+  authority: ''
+  lang: ''
+  script: ''
+  type: ''
+  usage: primary
+  title:
+    $: Publicity still from the film A Hard Day's Night [1964].
+typeOfResource:
+  $: still image
+originInfo:
+  dateCreated:
+    encoding: w3cdtf
+    qualifier: approximate
+    $: '1964'
+identifier:
+- displayLabel: Photo Order
+  type: local_photo_order
+  $: Beatles Exhibition
+- type: uuid
+  $: 9df9e910-6780-0131-1d88-58d385a7b928
+location:
+  physicalLocation:
+  - authority: marcorg
+    type: repository
+    $: nn
+  - type: division
+    $: Billy Rose Theatre Division
+  shelfLocator:
+    $: ! '*T Pho B (Beatles, The)'
+relatedItem:
+  type: host
+  titleInfo:
+    title:
+      $: Beatles Exhibition
+  identifier:
+  - type: uuid
+    $: 6d7f0270-6780-0131-043c-58d385a7b928
+  - type: local_photo_order
+    $: Beatles Exhibition

@@ -1,0 +1,79 @@
+---
+version: '3.4'
+schemaLocation: http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd
+titleInfo:
+- supplied: 'yes'
+  usage: primary
+  title:
+    $: Cigarette cards.
+- title:
+    $: Tobacco Cards
+- lang: eng
+  supplied: 'no'
+  usage: primary
+  title:
+    $: Famous love scenes
+- lang: eng
+  supplied: 'no'
+  usage: primary
+  title:
+    $: The bride wore red. Joan Crawford as Anni Pavelevitch. Robert Young as Rudi
+      Pal.
+typeOfResource:
+  $: still image
+identifier:
+- displayLabel: CATNYP ID (legacy)
+  type: local_catnyp
+  $: b6932483
+- displayLabel: NYPL catalog ID (B-number)
+  type: local_bnumber
+  $: b15262620
+- displayLabel: Hades Collection Guide ID (legacy)
+  type: local_hades_collection
+  $: '161'
+- displayLabel: Hades struc ID (legacy)
+  type: local_hades
+  $: '819483'
+- type: uuid
+  $: 52cebf00-c558-012f-0c5e-58d385a7bc34
+location:
+- physicalLocation:
+  - authority: marcorg
+    type: repository
+    $: nn
+  - type: division
+    $: George Arents Collection
+  shelfLocator:
+    $: Arents Cigarette Cards
+- shelfLocator:
+    $: Arents Cigarette Cards 789
+- physicalLocation:
+    type: division
+    $: George Arents Collection
+originInfo:
+  place:
+    placeTerm:
+      $: U.K.
+note:
+- type: content
+  $: Phillips; Phillips Cigarettes
+- type: citation/reference
+  $: Cartophilic reference books P50-104
+relatedItem:
+  type: host
+  titleInfo:
+    title:
+      $: Famous love scenes
+  identifier:
+  - type: uuid
+    $: 50f5e950-c558-012f-17ec-58d385a7bc34
+  - type: local_hades
+    $: '780455'
+  relatedItem:
+    type: host
+    titleInfo:
+      title:
+        $: ! '[Cigarette cards.]'
+    identifier:
+      type: uuid
+      $: b50ab6f0-c52b-012f-5986-58d385a7bc34
