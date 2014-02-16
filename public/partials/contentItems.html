@@ -1,5 +1,5 @@
 <ul data-masonry='{"itemSelector": ".content-item", "columnWidth": 40, "isFitWidth": true}' class='content-items thumbnails'>
   <li data-ng-repeat='contentItem in contentItems | limitTo: getLimit() track by contentItem.url' data-ng-include='"/partials/contentItem.html"'>
   </li>
-  <div class='content-item infinite-scroll' data-infinite-scroll='throttledNextPage()' data-infinite-scroll-disabled='paginationThrottled()' data-infinite-scroll-immediate-check='false' data-infinite-scroll-distance='1'></div>
+  <li class='content-item infinite-scroll' data-infinite-scroll='throttledNextPage()' data-infinite-scroll-disabled='paginationThrottled()' data-infinite-scroll-immediate-check='false' data-infinite-scroll-distance='1'></li>
 </ul>
