@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908013942) do
+ActiveRecord::Schema.define(:version => 20140216165347) do
+
+  create_table "av_content_item_matches", :force => true do |t|
+    t.integer "tweet_id",           :null => false
+    t.integer "av_content_item_id", :null => false
+  end
+
+  add_index "av_content_item_matches", ["tweet_id", "av_content_item_id"], :name => "unique_av_content_match", :unique => true
+
+  create_table "av_content_items", :force => true do |t|
+    t.string   "title",        :limit => 510, :null => false
+    t.integer  "thumbnail_id",                :null => false
+    t.string   "av_id",                       :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "av_content_items", ["av_id"], :name => "index_av_content_items_on_av_id", :unique => true
 
   create_table "biblio_commons_list_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false

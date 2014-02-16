@@ -9,7 +9,8 @@ class TweetSearch
       BiblioCommonsListTweetSearch,
       DigitalCollectionsTweetSearch,
       ProgramTweetSearch,
-      ExhibitionTweetSearch
+      ExhibitionTweetSearch,
+      AvTweetSearch
     ]
   end
 

@@ -33,12 +33,13 @@ module Api
 
     def classes_for_category(category)
       case category
-      when 'all'    then ContentItem.classes
-      when 'blogs'  then BlogContentItem
-      when 'images' then [DigitalGalleryContentItem, DigitalCollectionsContentItem]
-      when 'books'  then BiblioCommonsTitleContentItem
-      when 'lists'  then BiblioCommonsListContentItem
-      when 'events' then [ProgramContentItem, ExhibitionContentItem]
+      when 'all'         then ContentItem.classes
+      when 'blogs'       then BlogContentItem
+      when 'images'      then [DigitalGalleryContentItem, DigitalCollectionsContentItem]
+      when 'books'       then BiblioCommonsTitleContentItem
+      when 'lists'       then BiblioCommonsListContentItem
+      when 'events'      then [ProgramContentItem, ExhibitionContentItem]
+      when 'audio_video' then AvContentItem
       end
     end
   end
