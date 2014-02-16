@@ -192,6 +192,10 @@ nav.affix {
   height: 0;
 }
 
+.content-item .icon-large {
+  margin-right: 7px;
+}
+
 .content-item img {
   display: block;
   margin-left: auto;
