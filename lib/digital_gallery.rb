@@ -43,7 +43,7 @@ class DigitalGallery
   end
 
   def title
-    document.xpath("//meta[@name='dc.Title']/@content").to_s
+    document.title.split('- ID:').first.strip
   end
 
   def thumbnail_uri
