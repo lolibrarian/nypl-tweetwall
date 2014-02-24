@@ -47,6 +47,9 @@ gem "airbrake"
 # Used to fetch metadata of remote images.
 gem "fastimage"
 
+# Defines a canonical hostname for the application.
+gem 'rack-canonical-host'
+
 group :test do
   gem 'minitest', '~> 4.0'
 end
