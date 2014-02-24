@@ -1,6 +1,8 @@
 # Because it's powered by a CMS, pages on NYPL's web site share a number of
 # common characteristics.
 module NYPLContentType
+  DEFAULT_THUMBNAIL_URL = 'http://www.nypl.org/sites/all/themes/nypl_new/images/nypl_logo_share.jpg'
+
   def initialize(id)
     @id = id
   end
