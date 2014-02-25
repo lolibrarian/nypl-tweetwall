@@ -16,7 +16,7 @@ class DigitalGalleryContentItem < ActiveRecord::Base
 
   before_validation :fetch_metadata
 
-  expires_in 1.day
+  expires_in 1.week
 
   # Fetches additional metadata associated with the image.
   def fetch_metadata

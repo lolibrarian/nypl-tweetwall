@@ -17,7 +17,7 @@ class BiblioCommonsTitleContentItem < ActiveRecord::Base
 
   before_validation :fetch_metadata
 
-  expires_in 1.day
+  expires_in 1.week
 
   # Fetches additional metadata associated with the item.
   def fetch_metadata
