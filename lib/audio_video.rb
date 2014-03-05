@@ -17,9 +17,12 @@ class AudioVideo
 
   # Returns a thumbnail URL for the audio/video item.
   #
-  # Warning: this is brittle (we're digging into the SWFObject configuration
-  # stanza).
+  # Warning: this is *extremely* brittle (we're digging into the configuration
+  # for the video embed code).
   def thumbnail_url
-    content.to_s.match(/addVariable\('image','(.*)'/)[1]
+    flashvars = content.css('embed')[0]['flashvars'].split('&')
+    image_flashvar = flashvars.find { |flashvar| flashvar.start_with?('image=') }
+    url = image_flashvar.sub!('image=', '')
+    CGI::unescape(url)
   end
 end
