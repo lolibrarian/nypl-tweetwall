@@ -41,4 +41,14 @@ class ContentItem
       klass.expired.destroy_all
     end
   end
+
+  # Deletes all "overflow" Retweets to help to conserve resources for
+  # exceptionally popular content.
+  def self.delete_overflow_retweets
+    classes.each do |klass|
+      klass.find_each do |content_item|
+        content_item.tweets.overflow_retweets.destroy_all
+      end
+    end
+  end
 end

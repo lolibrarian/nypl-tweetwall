@@ -35,6 +35,13 @@ class Tweet < ActiveRecord::Base
   expires_in 7.days, :tweet_created_at
 
   scope :blocked, where("screen_name IN (?)", SCREEN_NAME_BLACKLIST)
+  scope :retweets, where('retweeted_status_id IS NOT NULL')
+
+  # Returns an array of "overflow" Retweets (i.e. Retweets over the given
+  # +limit+).
+  def self.overflow_retweets(limit = 100)
+    retweets.order('tweet_created_at DESC').offset(limit)
+  end
 
   # Adds a validation error if blocked.
   def permitted?

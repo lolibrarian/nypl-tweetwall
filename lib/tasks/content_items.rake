@@ -8,4 +8,9 @@ namespace :content_items do
   task :delete_expired => :environment do
     ContentItem.delete_expired
   end
+
+  desc 'Deletes "overflow" Retweets'
+  task :delete_overflow_retweets => :environment do
+    ContentItem.delete_overflow_retweets
+  end
 end
