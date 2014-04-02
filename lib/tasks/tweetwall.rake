@@ -2,7 +2,7 @@ namespace :tweetwall do
   desc "Updates the Tweetwall"
   task :update => [
     "content_items:delete_expired",
-    'content_items:delete_overflow_retweets',
+    'content_items:delete_overflow_tweets',
     "tweets:delete_expired",
     "tweets:delete_blocked",
     "tweets:update",

@@ -42,12 +42,12 @@ class ContentItem
     end
   end
 
-  # Deletes all "overflow" Retweets to help to conserve resources for
+  # Deletes all "overflow" Tweets to help to conserve resources for
   # exceptionally popular content.
-  def self.delete_overflow_retweets
+  def self.delete_overflow_tweets
     classes.each do |klass|
       klass.find_each do |content_item|
-        content_item.tweets.overflow_retweets.destroy_all
+        content_item.tweets.overflow.destroy_all
       end
     end
   end
