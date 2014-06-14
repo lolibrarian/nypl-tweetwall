@@ -3,12 +3,10 @@ development:
   encoding: unicode
   database: nypl_tweetwall_development
   username: postgres
-  host: localhost
   min_messages: WARNING
 test:
   adapter: postgresql
   encoding: unicode
   database: nypl_tweetwall_test
   username: postgres
-  host: localhost
   min_messages: WARNING
