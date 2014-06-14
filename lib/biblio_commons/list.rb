@@ -7,10 +7,10 @@ module BiblioCommons
       uri = URI(url)
       return unless uri.host == BASE_LIST_URI.host
 
-      matches = uri.path.scan(/\A\/list\/show\/\w+\/(\d+)/).first
+      matches = uri.path.scan(/\A\/list\/(show|share)\/\w+\/(\d+)/).first
       return if matches.nil?
 
-      matches.first
+      matches.last
     end
 
     def initialize(list_id, user_id = nil)
@@ -22,16 +22,8 @@ module BiblioCommons
       "#{BASE_LIST_URI}/#{@user_id}/#{@list_id}"
     end
 
-    def lists
-      @lists ||= API.get("lists/#{@list_id}")["list"]
-    end
-
     def name
       CGI.unescapeHTML(lists["name"])
-    end
-
-    def list_items
-      lists["list_items"]
     end
 
     def user_id
@@ -51,6 +43,16 @@ module BiblioCommons
 
       title = Title.new(title_list_item['title']['id'])
       title.thumbnail_url
+    end
+
+  private
+
+    def lists
+      @lists ||= API.get("lists/#{@list_id}")["list"]
+    end
+
+    def list_items
+      lists["list_items"]
     end
   end
 end
