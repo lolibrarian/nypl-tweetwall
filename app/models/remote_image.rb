@@ -21,9 +21,10 @@ class RemoteImage < ActiveRecord::Base
     self.width, self.height = FastImage.size(url)
   end
 
-  # Returns a URL-encoded copy of the URL.
+  # Returns a URL-encoded copy of the URL (doesn't re-encode if already
+  # encoded).
   def encoded_url
-    URI::encode(url)
+    [:decode, :encode].reduce(url) { |memo, method| URI.send(method, memo) }
   end
 
   # Returns the preferred width of the remote image for the Tweetwall.
