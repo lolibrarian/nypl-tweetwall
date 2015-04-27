@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 1.9.3
+  - 2.1.6
 before_script:
   - psql --command 'create database nypl_tweetwall_test;' --username postgres
 script:
