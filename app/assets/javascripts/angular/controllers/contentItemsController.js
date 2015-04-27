@@ -17,22 +17,17 @@ app.controller('ContentItemsController', function ($scope,
     initializeContentItems();
     initializePagination();
     initializeMasonry();
-    navigationService.setCategorySlug('all');
   }
 
   function initializeNavigation() {
     $scope.categories = navigationService.categories;
-    $scope.getCategorySlug = navigationService.getCategorySlug;
-    $scope.setCategorySlug = navigationService.setCategorySlug;
     $scope.classForCategorySlug = navigationService.classForCategorySlug;
-    $scope.$watch('getCategorySlug()', function () {
-      $scope.$emit('navigation');
-    });
     $scope.$on('navigation', function () {
       // Because the navigation is affixed to the top of the viewport, when
       // used, to show the newest content first, scroll to the top of the page.
       window.scrollTo(0, 0);
     });
+    navigationService.attach($scope);
   }
 
   function initializeAlerts() {
@@ -64,9 +59,7 @@ app.controller('ContentItemsController', function ($scope,
   }
 
   function initializeContentItems() {
-    $scope.$on('navigation', function () {
-      getContentItems();
-    });
+    $scope.$on('navigation', getContentItems);
 
     $interval(function () {
       getContentItems();
