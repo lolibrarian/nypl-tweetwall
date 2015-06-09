@@ -52,6 +52,9 @@ gem "fastimage"
 # Defines a canonical hostname for the application.
 gem 'rack-canonical-host'
 
+# Patch OpenURI to allow for HTTP to HTTPS redirections.
+gem 'open_uri_redirections', '~> 0.2'
+
 group :test do
   gem 'minitest', '~> 4.0'
 end
