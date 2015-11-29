@@ -78,6 +78,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -155,9 +157,13 @@ DEPENDENCIES
   open_uri_redirections (~> 0.2)
   pg (= 0.15.1)
   pry
+  pry-rails
   rack-canonical-host
   rails (~> 3.2)
   sass-rails (~> 3.2.3)
   twitter
   uglifier (>= 1.0.3)
   unicorn
+
+BUNDLED WITH
+   1.10.6

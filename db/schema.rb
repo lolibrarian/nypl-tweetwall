@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140216165347) do
+ActiveRecord::Schema.define(:version => 20151129201721) do
 
   create_table "av_content_item_matches", :force => true do |t|
     t.integer "tweet_id",           :null => false
@@ -116,6 +116,24 @@ ActiveRecord::Schema.define(:version => 20140216165347) do
   end
 
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "unique_digital_gallery_content_match", :unique => true
+
+  create_table "encore_title_content_items", :force => true do |t|
+    t.text     "title",        :null => false
+    t.integer  "thumbnail_id", :null => false
+    t.text     "bib_id",       :null => false
+    t.text     "format",       :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "encore_title_content_items", ["bib_id"], :name => "index_encore_title_content_items_on_bib_id", :unique => true
+
+  create_table "encore_title_content_matches", :force => true do |t|
+    t.integer "tweet_id",                     :null => false
+    t.integer "encore_title_content_item_id", :null => false
+  end
+
+  add_index "encore_title_content_matches", ["tweet_id", "encore_title_content_item_id"], :name => "unique_encore_title_content_match", :unique => true
 
   create_table "exhibition_content_items", :force => true do |t|
     t.string   "title",         :limit => 510, :null => false

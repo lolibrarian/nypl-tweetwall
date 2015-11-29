@@ -26,11 +26,6 @@ gem 'jquery-rails'
 # For interacting with the Twitter API.
 gem "twitter"
 
-group :console do
-  # A debugging console.
-  gem "pry"
-end
-
 # Used to parse HTML documents.
 gem "nokogiri"
 
@@ -54,6 +49,12 @@ gem 'rack-canonical-host'
 
 # Patch OpenURI to allow for HTTP to HTTPS redirections.
 gem 'open_uri_redirections', '~> 0.2'
+
+group :development do
+  # A debugging console.
+  gem 'pry'
+  gem 'pry-rails'
+end
 
 group :test do
   gem 'minitest', '~> 4.0'

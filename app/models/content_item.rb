@@ -10,7 +10,8 @@ class ContentItem
       DigitalCollectionsContentItem,
       ProgramContentItem,
       ExhibitionContentItem,
-      AvContentItem
+      AvContentItem,
+      EncoreTitleContentItem
     ]
   end
 

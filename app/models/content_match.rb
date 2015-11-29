@@ -10,7 +10,8 @@ module ContentMatch
       DigitalCollectionsContentMatch,
       ProgramContentMatch,
       ExhibitionContentMatch,
-      AvContentItemMatch
+      AvContentItemMatch,
+      EncoreTitleContentMatch
     ]
   end
 

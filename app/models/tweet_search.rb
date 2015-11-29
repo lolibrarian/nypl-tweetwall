@@ -10,7 +10,8 @@ class TweetSearch
       DigitalCollectionsTweetSearch,
       ProgramTweetSearch,
       ExhibitionTweetSearch,
-      AvTweetSearch
+      AvTweetSearch,
+      EncoreTitleTweetSearch
     ]
   end
 
