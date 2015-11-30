@@ -4,13 +4,12 @@ module ContentMatch
   def self.classes
     [
       BlogContentMatch,
-      BiblioCommonsTitleContentMatch,
       DigitalGalleryContentMatch,
-      BiblioCommonsListContentMatch,
       DigitalCollectionsContentMatch,
       ProgramContentMatch,
       ExhibitionContentMatch,
-      AvContentItemMatch
+      AvContentItemMatch,
+      EncoreTitleContentMatch
     ]
   end
 

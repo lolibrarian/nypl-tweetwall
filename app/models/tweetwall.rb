@@ -31,7 +31,6 @@ class Tweetwall
       api/content_items/blogs
       api/content_items/images
       api/content_items/books
-      api/content_items/lists
       api/content_items/events
     )
   end

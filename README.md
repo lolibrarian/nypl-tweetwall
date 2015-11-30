@@ -17,7 +17,6 @@ The NYPL Tweetwall presents content from library collections that are currently 
 Credentials for several APIs are required to update the Tweetwall:
 
   * [Twitter](https://dev.twitter.com/)
-  * [BiblioCommons](http://developer.bibliocommons.com/)
   * [NYPL Digital Collections API](http://api.repo.nypl.org/)
 
 They're passed via environment variables to the application, so creating a `.env` file for [Foreman](https://github.com/ddollar/foreman) is recommended:
@@ -26,7 +25,6 @@ They're passed via environment variables to the application, so creating a `.env
     TWITTER_CONSUMER_SECRET=bar
     TWITTER_OAUTH_TOKEN=baz
     TWITTER_OAUTH_TOKEN_SECRET=qux
-    BIBLIOCOMMONS_API_KEY=foo
     DIGITAL_COLLECTIONS_API_TOKEN=qux
 
 ## Updating

@@ -36,8 +36,7 @@ module Api
       when 'all'         then ContentItem.classes
       when 'blogs'       then BlogContentItem
       when 'images'      then [DigitalGalleryContentItem, DigitalCollectionsContentItem]
-      when 'books'       then BiblioCommonsTitleContentItem
-      when 'lists'       then BiblioCommonsListContentItem
+      when 'books'       then EncoreTitleContentItem
       when 'events'      then [ProgramContentItem, ExhibitionContentItem]
       when 'audio_video' then AvContentItem
       end

@@ -5,7 +5,6 @@ app.service('navigationService', function ($location,
       categories = [
         {slug: 'all',         name: 'All'},
         {slug: 'books',       name: 'Books'},
-        {slug: 'lists',       name: 'Lists'},
         {slug: 'images',      name: 'Images'},
         {slug: 'blogs',       name: 'Blog Posts'},
         {slug: 'events',      name: 'Events'},

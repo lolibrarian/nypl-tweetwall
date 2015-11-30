@@ -4,13 +4,12 @@ class TweetSearch
   def self.classes
     [
       BlogTweetSearch,
-      BiblioCommonsTitleTweetSearch,
       DigitalGalleryTweetSearch,
-      BiblioCommonsListTweetSearch,
       DigitalCollectionsTweetSearch,
       ProgramTweetSearch,
       ExhibitionTweetSearch,
-      AvTweetSearch
+      AvTweetSearch,
+      EncoreTitleTweetSearch
     ]
   end
 

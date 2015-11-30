@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140216165347) do
+ActiveRecord::Schema.define(:version => 20151130033644) do
 
   create_table "av_content_item_matches", :force => true do |t|
     t.integer "tweet_id",           :null => false
@@ -29,42 +29,6 @@ ActiveRecord::Schema.define(:version => 20140216165347) do
   end
 
   add_index "av_content_items", ["av_id"], :name => "index_av_content_items_on_av_id", :unique => true
-
-  create_table "biblio_commons_list_content_items", :force => true do |t|
-    t.string   "title",        :limit => 510, :null => false
-    t.integer  "list_id",      :limit => 8,   :null => false
-    t.integer  "user_id",      :limit => 8,   :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.integer  "thumbnail_id"
-  end
-
-  add_index "biblio_commons_list_content_items", ["list_id"], :name => "unique_list_id", :unique => true
-
-  create_table "biblio_commons_list_content_matches", :force => true do |t|
-    t.integer "tweet_id",                            :null => false
-    t.integer "biblio_commons_list_content_item_id", :null => false
-  end
-
-  add_index "biblio_commons_list_content_matches", ["tweet_id", "biblio_commons_list_content_item_id"], :name => "unique_biblio_commons_list_content_match", :unique => true
-
-  create_table "biblio_commons_title_content_items", :force => true do |t|
-    t.string   "title",        :limit => 510, :null => false
-    t.integer  "title_id",     :limit => 8,   :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.integer  "thumbnail_id"
-    t.string   "format",                      :null => false
-  end
-
-  add_index "biblio_commons_title_content_items", ["title_id"], :name => "unique_title_id", :unique => true
-
-  create_table "biblio_commons_title_content_matches", :force => true do |t|
-    t.integer "tweet_id",                             :null => false
-    t.integer "biblio_commons_title_content_item_id", :null => false
-  end
-
-  add_index "biblio_commons_title_content_matches", ["tweet_id", "biblio_commons_title_content_item_id"], :name => "unique_biblio_commons_title_content_match", :unique => true
 
   create_table "blog_content_items", :force => true do |t|
     t.string   "title",        :limit => 510, :null => false
@@ -116,6 +80,24 @@ ActiveRecord::Schema.define(:version => 20140216165347) do
   end
 
   add_index "digital_gallery_content_matches", ["tweet_id", "digital_gallery_content_item_id"], :name => "unique_digital_gallery_content_match", :unique => true
+
+  create_table "encore_title_content_items", :force => true do |t|
+    t.text     "title",        :null => false
+    t.integer  "thumbnail_id", :null => false
+    t.text     "bib_id",       :null => false
+    t.text     "format",       :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "encore_title_content_items", ["bib_id"], :name => "index_encore_title_content_items_on_bib_id", :unique => true
+
+  create_table "encore_title_content_matches", :force => true do |t|
+    t.integer "tweet_id",                     :null => false
+    t.integer "encore_title_content_item_id", :null => false
+  end
+
+  add_index "encore_title_content_matches", ["tweet_id", "encore_title_content_item_id"], :name => "unique_encore_title_content_match", :unique => true
 
   create_table "exhibition_content_items", :force => true do |t|
     t.string   "title",         :limit => 510, :null => false
