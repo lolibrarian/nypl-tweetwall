@@ -4,9 +4,7 @@ class ContentItem
   def self.classes
     [
       BlogContentItem,
-      BiblioCommonsTitleContentItem,
       DigitalGalleryContentItem,
-      BiblioCommonsListContentItem,
       DigitalCollectionsContentItem,
       ProgramContentItem,
       ExhibitionContentItem,
