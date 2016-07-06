@@ -1,7 +1,7 @@
 class Blog
   include NYPLContentType
 
-  BASE_URI = URI.parse("http://www.nypl.org/blog/")
+  BASE_URI = URI.parse("https://www.nypl.org/blog/")
   CONTENT_SELECTOR = '.node-blog'
 
   # Extracts a NYPL Blogs ID from the given URL.
