@@ -1,7 +1,7 @@
 class AudioVideo
   include NYPLContentType
 
-  BASE_URI = URI.parse('http://www.nypl.org/audiovideo/')
+  BASE_URI = URI.parse('https://www.nypl.org/audiovideo/')
   CONTENT_SELECTOR = '.node-av_content'
 
   # Extracts a NYPL audio/video ID from the given URL.

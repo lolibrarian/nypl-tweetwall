@@ -14,7 +14,7 @@ class ProgramTest < ActiveSupport::TestCase
   end
 
   def test_uri
-    expected_uri = URI('http://www.nypl.org/events/programs/2013/09/17/yoga-seniors')
+    expected_uri = URI('https://www.nypl.org/events/programs/2013/09/17/yoga-seniors')
     program = Program.new('2013/09/17/yoga-seniors')
     assert_equal expected_uri, program.uri
   end

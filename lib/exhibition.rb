@@ -1,7 +1,7 @@
 class Exhibition
   include NYPLContentType
 
-  BASE_URI = URI.parse("http://www.nypl.org/events/exhibitions/")
+  BASE_URI = URI.parse("https://www.nypl.org/events/exhibitions/")
   CONTENT_SELECTOR = '.node-event_exhibition'
 
   # Extracts a NYPL exhibition ID from the given URL.

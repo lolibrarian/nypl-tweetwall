@@ -14,7 +14,7 @@ class AudioVideoTest < ActiveSupport::TestCase
   end
 
   def test_uri
-    expected_uri = URI('http://www.nypl.org/audiovideo/tommy-turrentine-trumpet')
+    expected_uri = URI('https://www.nypl.org/audiovideo/tommy-turrentine-trumpet')
     exhibition = AudioVideo.new('tommy-turrentine-trumpet')
     assert_equal expected_uri, exhibition.uri
   end

@@ -14,7 +14,7 @@ class ExhibitionTest < ActiveSupport::TestCase
   end
 
   def test_uri
-    expected_uri = URI('http://www.nypl.org/events/exhibitions/breaking-barriers-ata-and-black-tennis-pioneers')
+    expected_uri = URI('https://www.nypl.org/events/exhibitions/breaking-barriers-ata-and-black-tennis-pioneers')
     exhibition = Exhibition.new('breaking-barriers-ata-and-black-tennis-pioneers')
     assert_equal expected_uri, exhibition.uri
   end
