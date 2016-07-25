@@ -15,7 +15,7 @@ class TweetUrl < ActiveRecord::Base
 
   # "Expands" the original URL by following all of the redirects.
   def expand_url
-    self.expanded_url ||= open(original_url, allow_redirections: :safe) { |file| file.base_uri.to_s }
+    self.expanded_url ||= URLRedirectFollower.new(original_url).end_url
   rescue
     false
   end

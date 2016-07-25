@@ -47,8 +47,8 @@ gem "fastimage"
 # Defines a canonical hostname for the application.
 gem 'rack-canonical-host'
 
-# Patch OpenURI to allow for HTTP to HTTPS redirections.
-gem 'open_uri_redirections', '~> 0.2'
+# cURL interface
+gem 'curb', '~> 0.9'
 
 group :development do
   # A debugging console.
