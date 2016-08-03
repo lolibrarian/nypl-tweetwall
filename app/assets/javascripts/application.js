@@ -22,4 +22,5 @@
 //= require bootstrap
 //= require moment
 //= require google_analytics
+//= require twemoji
 //= require_tree .
