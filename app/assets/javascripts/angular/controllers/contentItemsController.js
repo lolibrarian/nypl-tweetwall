@@ -47,6 +47,8 @@ app.controller('ContentItemsController', function ($scope,
 
   function initializeMasonry() {
     masonryService.onPosition(function () {
+      initializeEmoji();
+
       // Add a class to positioned bricks for styling purposes. A timeout is
       // used so CSS transition directives are applied only *after* the initial
       // positioning.
@@ -64,6 +66,10 @@ app.controller('ContentItemsController', function ($scope,
     $interval(function () {
       getContentItems();
     }, CONTENT_ITEMS_POLLING_FREQUENCY);
+  }
+
+  function initializeEmoji() {
+    twemoji.parse(document.body, {size: 16});
   }
 
   function getContentItems(options) {
